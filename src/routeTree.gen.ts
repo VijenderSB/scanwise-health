@@ -24,7 +24,6 @@ import { Route as ConditionsSlugRouteImport } from './routes/conditions.$slug'
 import { Route as GuidesSlugRouteImport } from './routes/guides.$slug'
 import { Route as ScanCentresIndexRouteImport } from './routes/scan-centres.index'
 import { Route as ScanCentresCityRouteImport } from './routes/scan-centres.$city'
-import { Route as ScanCentresSlugRouteImport } from './routes/scan-centres.$slug'
 import { Route as ScanTestsIndexRouteImport } from './routes/scan-tests.index'
 import { Route as ScanTestsModalityRouteImport } from './routes/scan-tests.$modality'
 import { Route as ScanCentresCitySlugRouteImport } from './routes/scan-centres.$city.$slug'
@@ -105,11 +104,6 @@ const ScanCentresCityRoute = ScanCentresCityRouteImport.update({
   path: '/$city',
   getParentRoute: () => ScanCentresRoute,
 } as any)
-const ScanCentresSlugRoute = ScanCentresSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => ScanCentresRoute,
-} as any)
 const ScanTestsIndexRoute = ScanTestsIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -146,7 +140,6 @@ export interface FileRoutesByFullPath {
   '/conditions/$slug': typeof ConditionsSlugRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/scan-centres/$city': typeof ScanCentresCityRouteWithChildren
-  '/scan-centres/$slug': typeof ScanCentresSlugRoute
   '/scan-tests/$modality': typeof ScanTestsModalityRouteWithChildren
   '/scan-centres/': typeof ScanCentresIndexRoute
   '/scan-tests/': typeof ScanTestsIndexRoute
@@ -166,7 +159,6 @@ export interface FileRoutesByTo {
   '/conditions/$slug': typeof ConditionsSlugRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/scan-centres/$city': typeof ScanCentresCityRouteWithChildren
-  '/scan-centres/$slug': typeof ScanCentresSlugRoute
   '/scan-tests/$modality': typeof ScanTestsModalityRouteWithChildren
   '/scan-centres': typeof ScanCentresIndexRoute
   '/scan-tests': typeof ScanTestsIndexRoute
@@ -189,7 +181,6 @@ export interface FileRoutesById {
   '/conditions/$slug': typeof ConditionsSlugRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/scan-centres/$city': typeof ScanCentresCityRouteWithChildren
-  '/scan-centres/$slug': typeof ScanCentresSlugRoute
   '/scan-tests/$modality': typeof ScanTestsModalityRouteWithChildren
   '/scan-centres/': typeof ScanCentresIndexRoute
   '/scan-tests/': typeof ScanTestsIndexRoute
@@ -213,7 +204,6 @@ export interface FileRouteTypes {
     | '/conditions/$slug'
     | '/guides/$slug'
     | '/scan-centres/$city'
-    | '/scan-centres/$slug'
     | '/scan-tests/$modality'
     | '/scan-centres/'
     | '/scan-tests/'
@@ -233,7 +223,6 @@ export interface FileRouteTypes {
     | '/conditions/$slug'
     | '/guides/$slug'
     | '/scan-centres/$city'
-    | '/scan-centres/$slug'
     | '/scan-tests/$modality'
     | '/scan-centres'
     | '/scan-tests'
@@ -255,7 +244,6 @@ export interface FileRouteTypes {
     | '/conditions/$slug'
     | '/guides/$slug'
     | '/scan-centres/$city'
-    | '/scan-centres/$slug'
     | '/scan-tests/$modality'
     | '/scan-centres/'
     | '/scan-tests/'
@@ -385,13 +373,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ScanCentresCityRouteImport
       parentRoute: typeof ScanCentresRoute
     }
-    '/scan-centres/$slug': {
-      id: '/scan-centres/$slug'
-      path: '/$slug'
-      fullPath: '/scan-centres/$slug'
-      preLoaderRoute: typeof ScanCentresSlugRouteImport
-      parentRoute: typeof ScanCentresRoute
-    }
     '/scan-tests/': {
       id: '/scan-tests/'
       path: '/'
@@ -449,13 +430,11 @@ const ScanCentresCityRouteWithChildren = ScanCentresCityRoute._addFileChildren(
 
 interface ScanCentresRouteChildren {
   ScanCentresCityRoute: typeof ScanCentresCityRouteWithChildren
-  ScanCentresSlugRoute: typeof ScanCentresSlugRoute
   ScanCentresIndexRoute: typeof ScanCentresIndexRoute
 }
 
 const ScanCentresRouteChildren: ScanCentresRouteChildren = {
   ScanCentresCityRoute: ScanCentresCityRouteWithChildren,
-  ScanCentresSlugRoute: ScanCentresSlugRoute,
   ScanCentresIndexRoute: ScanCentresIndexRoute,
 }
 
