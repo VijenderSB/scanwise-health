@@ -11,12 +11,17 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdvancedCancerImagingRouteImport } from './routes/advanced-cancer-imaging'
+import { Route as BookAScanRouteImport } from './routes/book-a-scan'
+import { Route as BookingConfirmationRouteImport } from './routes/booking-confirmation'
 import { Route as CompareScansRouteImport } from './routes/compare-scans'
+import { Route as ConditionsRouteImport } from './routes/conditions'
 import { Route as Lu177PsmaTherapyRouteImport } from './routes/lu-177-psma-therapy'
 import { Route as PreparationGuidesRouteImport } from './routes/preparation-guides'
 import { Route as ScanCentresRouteImport } from './routes/scan-centres'
 import { Route as ScanCostRouteImport } from './routes/scan-cost'
 import { Route as ScanTestsRouteImport } from './routes/scan-tests'
+import { Route as ConditionsSlugRouteImport } from './routes/conditions.$slug'
+import { Route as GuidesSlugRouteImport } from './routes/guides.$slug'
 import { Route as ScanCentresIndexRouteImport } from './routes/scan-centres.index'
 import { Route as ScanCentresCityRouteImport } from './routes/scan-centres.$city'
 import { Route as ScanCentresSlugRouteImport } from './routes/scan-centres.$slug'
@@ -35,9 +40,24 @@ const AdvancedCancerImagingRoute = AdvancedCancerImagingRouteImport.update({
   path: '/advanced-cancer-imaging',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BookAScanRoute = BookAScanRouteImport.update({
+  id: '/book-a-scan',
+  path: '/book-a-scan',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BookingConfirmationRoute = BookingConfirmationRouteImport.update({
+  id: '/booking-confirmation',
+  path: '/booking-confirmation',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CompareScansRoute = CompareScansRouteImport.update({
   id: '/compare-scans',
   path: '/compare-scans',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConditionsRoute = ConditionsRouteImport.update({
+  id: '/conditions',
+  path: '/conditions',
   getParentRoute: () => rootRouteImport,
 } as any)
 const Lu177PsmaTherapyRoute = Lu177PsmaTherapyRouteImport.update({
@@ -63,6 +83,16 @@ const ScanCostRoute = ScanCostRouteImport.update({
 const ScanTestsRoute = ScanTestsRouteImport.update({
   id: '/scan-tests',
   path: '/scan-tests',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConditionsSlugRoute = ConditionsSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => ConditionsRoute,
+} as any)
+const GuidesSlugRoute = GuidesSlugRouteImport.update({
+  id: '/guides/$slug',
+  path: '/guides/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ScanCentresIndexRoute = ScanCentresIndexRouteImport.update({
@@ -104,12 +134,17 @@ const ScanTestsModalityDetailRoute = ScanTestsModalityDetailRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/advanced-cancer-imaging': typeof AdvancedCancerImagingRoute
+  '/book-a-scan': typeof BookAScanRoute
+  '/booking-confirmation': typeof BookingConfirmationRoute
   '/compare-scans': typeof CompareScansRoute
+  '/conditions': typeof ConditionsRouteWithChildren
   '/lu-177-psma-therapy': typeof Lu177PsmaTherapyRoute
   '/preparation-guides': typeof PreparationGuidesRoute
   '/scan-centres': typeof ScanCentresRouteWithChildren
   '/scan-cost': typeof ScanCostRoute
   '/scan-tests': typeof ScanTestsRouteWithChildren
+  '/conditions/$slug': typeof ConditionsSlugRoute
+  '/guides/$slug': typeof GuidesSlugRoute
   '/scan-centres/$city': typeof ScanCentresCityRouteWithChildren
   '/scan-centres/$slug': typeof ScanCentresSlugRoute
   '/scan-tests/$modality': typeof ScanTestsModalityRouteWithChildren
@@ -121,10 +156,15 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/advanced-cancer-imaging': typeof AdvancedCancerImagingRoute
+  '/book-a-scan': typeof BookAScanRoute
+  '/booking-confirmation': typeof BookingConfirmationRoute
   '/compare-scans': typeof CompareScansRoute
+  '/conditions': typeof ConditionsRouteWithChildren
   '/lu-177-psma-therapy': typeof Lu177PsmaTherapyRoute
   '/preparation-guides': typeof PreparationGuidesRoute
   '/scan-cost': typeof ScanCostRoute
+  '/conditions/$slug': typeof ConditionsSlugRoute
+  '/guides/$slug': typeof GuidesSlugRoute
   '/scan-centres/$city': typeof ScanCentresCityRouteWithChildren
   '/scan-centres/$slug': typeof ScanCentresSlugRoute
   '/scan-tests/$modality': typeof ScanTestsModalityRouteWithChildren
@@ -137,12 +177,17 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/advanced-cancer-imaging': typeof AdvancedCancerImagingRoute
+  '/book-a-scan': typeof BookAScanRoute
+  '/booking-confirmation': typeof BookingConfirmationRoute
   '/compare-scans': typeof CompareScansRoute
+  '/conditions': typeof ConditionsRouteWithChildren
   '/lu-177-psma-therapy': typeof Lu177PsmaTherapyRoute
   '/preparation-guides': typeof PreparationGuidesRoute
   '/scan-centres': typeof ScanCentresRouteWithChildren
   '/scan-cost': typeof ScanCostRoute
   '/scan-tests': typeof ScanTestsRouteWithChildren
+  '/conditions/$slug': typeof ConditionsSlugRoute
+  '/guides/$slug': typeof GuidesSlugRoute
   '/scan-centres/$city': typeof ScanCentresCityRouteWithChildren
   '/scan-centres/$slug': typeof ScanCentresSlugRoute
   '/scan-tests/$modality': typeof ScanTestsModalityRouteWithChildren
@@ -156,12 +201,17 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/advanced-cancer-imaging'
+    | '/book-a-scan'
+    | '/booking-confirmation'
     | '/compare-scans'
+    | '/conditions'
     | '/lu-177-psma-therapy'
     | '/preparation-guides'
     | '/scan-centres'
     | '/scan-cost'
     | '/scan-tests'
+    | '/conditions/$slug'
+    | '/guides/$slug'
     | '/scan-centres/$city'
     | '/scan-centres/$slug'
     | '/scan-tests/$modality'
@@ -173,10 +223,15 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/advanced-cancer-imaging'
+    | '/book-a-scan'
+    | '/booking-confirmation'
     | '/compare-scans'
+    | '/conditions'
     | '/lu-177-psma-therapy'
     | '/preparation-guides'
     | '/scan-cost'
+    | '/conditions/$slug'
+    | '/guides/$slug'
     | '/scan-centres/$city'
     | '/scan-centres/$slug'
     | '/scan-tests/$modality'
@@ -188,12 +243,17 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/advanced-cancer-imaging'
+    | '/book-a-scan'
+    | '/booking-confirmation'
     | '/compare-scans'
+    | '/conditions'
     | '/lu-177-psma-therapy'
     | '/preparation-guides'
     | '/scan-centres'
     | '/scan-cost'
     | '/scan-tests'
+    | '/conditions/$slug'
+    | '/guides/$slug'
     | '/scan-centres/$city'
     | '/scan-centres/$slug'
     | '/scan-tests/$modality'
@@ -206,12 +266,16 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AdvancedCancerImagingRoute: typeof AdvancedCancerImagingRoute
+  BookAScanRoute: typeof BookAScanRoute
+  BookingConfirmationRoute: typeof BookingConfirmationRoute
   CompareScansRoute: typeof CompareScansRoute
+  ConditionsRoute: typeof ConditionsRouteWithChildren
   Lu177PsmaTherapyRoute: typeof Lu177PsmaTherapyRoute
   PreparationGuidesRoute: typeof PreparationGuidesRoute
   ScanCentresRoute: typeof ScanCentresRouteWithChildren
   ScanCostRoute: typeof ScanCostRoute
   ScanTestsRoute: typeof ScanTestsRouteWithChildren
+  GuidesSlugRoute: typeof GuidesSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -230,11 +294,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdvancedCancerImagingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/book-a-scan': {
+      id: '/book-a-scan'
+      path: '/book-a-scan'
+      fullPath: '/book-a-scan'
+      preLoaderRoute: typeof BookAScanRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/booking-confirmation': {
+      id: '/booking-confirmation'
+      path: '/booking-confirmation'
+      fullPath: '/booking-confirmation'
+      preLoaderRoute: typeof BookingConfirmationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/compare-scans': {
       id: '/compare-scans'
       path: '/compare-scans'
       fullPath: '/compare-scans'
       preLoaderRoute: typeof CompareScansRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/conditions': {
+      id: '/conditions'
+      path: '/conditions'
+      fullPath: '/conditions'
+      preLoaderRoute: typeof ConditionsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/lu-177-psma-therapy': {
@@ -270,6 +355,20 @@ declare module '@tanstack/react-router' {
       path: '/scan-tests'
       fullPath: '/scan-tests'
       preLoaderRoute: typeof ScanTestsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/conditions/$slug': {
+      id: '/conditions/$slug'
+      path: '/$slug'
+      fullPath: '/conditions/$slug'
+      preLoaderRoute: typeof ConditionsSlugRouteImport
+      parentRoute: typeof ConditionsRoute
+    }
+    '/guides/$slug': {
+      id: '/guides/$slug'
+      path: '/guides/$slug'
+      fullPath: '/guides/$slug'
+      preLoaderRoute: typeof GuidesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/scan-centres/': {
@@ -323,6 +422,18 @@ declare module '@tanstack/react-router' {
     }
   }
 }
+
+interface ConditionsRouteChildren {
+  ConditionsSlugRoute: typeof ConditionsSlugRoute
+}
+
+const ConditionsRouteChildren: ConditionsRouteChildren = {
+  ConditionsSlugRoute: ConditionsSlugRoute,
+}
+
+const ConditionsRouteWithChildren = ConditionsRoute._addFileChildren(
+  ConditionsRouteChildren,
+)
 
 interface ScanCentresCityRouteChildren {
   ScanCentresCitySlugRoute: typeof ScanCentresCitySlugRoute
@@ -380,12 +491,16 @@ const ScanTestsRouteWithChildren = ScanTestsRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AdvancedCancerImagingRoute: AdvancedCancerImagingRoute,
+  BookAScanRoute: BookAScanRoute,
+  BookingConfirmationRoute: BookingConfirmationRoute,
   CompareScansRoute: CompareScansRoute,
+  ConditionsRoute: ConditionsRouteWithChildren,
   Lu177PsmaTherapyRoute: Lu177PsmaTherapyRoute,
   PreparationGuidesRoute: PreparationGuidesRoute,
   ScanCentresRoute: ScanCentresRouteWithChildren,
   ScanCostRoute: ScanCostRoute,
   ScanTestsRoute: ScanTestsRouteWithChildren,
+  GuidesSlugRoute: GuidesSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
