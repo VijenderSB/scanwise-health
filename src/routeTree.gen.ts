@@ -29,7 +29,9 @@ import { Route as ScanCentresIndexRouteImport } from './routes/scan-centres.inde
 import { Route as ScanCentresCityRouteImport } from './routes/scan-centres.$city'
 import { Route as ScanTestsIndexRouteImport } from './routes/scan-tests.index'
 import { Route as ScanTestsModalityRouteImport } from './routes/scan-tests.$modality'
+import { Route as ScanCentresCityIndexRouteImport } from './routes/scan-centres.$city.index'
 import { Route as ScanCentresCitySlugRouteImport } from './routes/scan-centres.$city.$slug'
+import { Route as ScanTestsModalityIndexRouteImport } from './routes/scan-tests.$modality.index'
 import { Route as ScanTestsModalityDetailRouteImport } from './routes/scan-tests.$modality.$detail'
 
 const IndexRoute = IndexRouteImport.update({
@@ -131,10 +133,20 @@ const ScanTestsModalityRoute = ScanTestsModalityRouteImport.update({
   path: '/$modality',
   getParentRoute: () => ScanTestsRoute,
 } as any)
+const ScanCentresCityIndexRoute = ScanCentresCityIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ScanCentresCityRoute,
+} as any)
 const ScanCentresCitySlugRoute = ScanCentresCitySlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
   getParentRoute: () => ScanCentresCityRoute,
+} as any)
+const ScanTestsModalityIndexRoute = ScanTestsModalityIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ScanTestsModalityRoute,
 } as any)
 const ScanTestsModalityDetailRoute = ScanTestsModalityDetailRouteImport.update({
   id: '/$detail',
@@ -164,6 +176,8 @@ export interface FileRoutesByFullPath {
   '/scan-tests/': typeof ScanTestsIndexRoute
   '/scan-centres/$city/$slug': typeof ScanCentresCitySlugRoute
   '/scan-tests/$modality/$detail': typeof ScanTestsModalityDetailRoute
+  '/scan-centres/$city/': typeof ScanCentresCityIndexRoute
+  '/scan-tests/$modality/': typeof ScanTestsModalityIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -179,12 +193,12 @@ export interface FileRoutesByTo {
   '/admin': typeof AuthenticatedAdminRoute
   '/conditions/$slug': typeof ConditionsSlugRoute
   '/guides/$slug': typeof GuidesSlugRoute
-  '/scan-centres/$city': typeof ScanCentresCityRouteWithChildren
-  '/scan-tests/$modality': typeof ScanTestsModalityRouteWithChildren
   '/scan-centres': typeof ScanCentresIndexRoute
   '/scan-tests': typeof ScanTestsIndexRoute
   '/scan-centres/$city/$slug': typeof ScanCentresCitySlugRoute
   '/scan-tests/$modality/$detail': typeof ScanTestsModalityDetailRoute
+  '/scan-centres/$city': typeof ScanCentresCityIndexRoute
+  '/scan-tests/$modality': typeof ScanTestsModalityIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -210,6 +224,8 @@ export interface FileRoutesById {
   '/scan-tests/': typeof ScanTestsIndexRoute
   '/scan-centres/$city/$slug': typeof ScanCentresCitySlugRoute
   '/scan-tests/$modality/$detail': typeof ScanTestsModalityDetailRoute
+  '/scan-centres/$city/': typeof ScanCentresCityIndexRoute
+  '/scan-tests/$modality/': typeof ScanTestsModalityIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -235,6 +251,8 @@ export interface FileRouteTypes {
     | '/scan-tests/'
     | '/scan-centres/$city/$slug'
     | '/scan-tests/$modality/$detail'
+    | '/scan-centres/$city/'
+    | '/scan-tests/$modality/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -250,12 +268,12 @@ export interface FileRouteTypes {
     | '/admin'
     | '/conditions/$slug'
     | '/guides/$slug'
-    | '/scan-centres/$city'
-    | '/scan-tests/$modality'
     | '/scan-centres'
     | '/scan-tests'
     | '/scan-centres/$city/$slug'
     | '/scan-tests/$modality/$detail'
+    | '/scan-centres/$city'
+    | '/scan-tests/$modality'
   id:
     | '__root__'
     | '/'
@@ -280,6 +298,8 @@ export interface FileRouteTypes {
     | '/scan-tests/'
     | '/scan-centres/$city/$slug'
     | '/scan-tests/$modality/$detail'
+    | '/scan-centres/$city/'
+    | '/scan-tests/$modality/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -441,12 +461,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ScanTestsModalityRouteImport
       parentRoute: typeof ScanTestsRoute
     }
+    '/scan-centres/$city/': {
+      id: '/scan-centres/$city/'
+      path: '/'
+      fullPath: '/scan-centres/$city/'
+      preLoaderRoute: typeof ScanCentresCityIndexRouteImport
+      parentRoute: typeof ScanCentresCityRoute
+    }
     '/scan-centres/$city/$slug': {
       id: '/scan-centres/$city/$slug'
       path: '/$slug'
       fullPath: '/scan-centres/$city/$slug'
       preLoaderRoute: typeof ScanCentresCitySlugRouteImport
       parentRoute: typeof ScanCentresCityRoute
+    }
+    '/scan-tests/$modality/': {
+      id: '/scan-tests/$modality/'
+      path: '/'
+      fullPath: '/scan-tests/$modality/'
+      preLoaderRoute: typeof ScanTestsModalityIndexRouteImport
+      parentRoute: typeof ScanTestsModalityRoute
     }
     '/scan-tests/$modality/$detail': {
       id: '/scan-tests/$modality/$detail'
@@ -483,10 +517,12 @@ const ConditionsRouteWithChildren = ConditionsRoute._addFileChildren(
 
 interface ScanCentresCityRouteChildren {
   ScanCentresCitySlugRoute: typeof ScanCentresCitySlugRoute
+  ScanCentresCityIndexRoute: typeof ScanCentresCityIndexRoute
 }
 
 const ScanCentresCityRouteChildren: ScanCentresCityRouteChildren = {
   ScanCentresCitySlugRoute: ScanCentresCitySlugRoute,
+  ScanCentresCityIndexRoute: ScanCentresCityIndexRoute,
 }
 
 const ScanCentresCityRouteWithChildren = ScanCentresCityRoute._addFileChildren(
@@ -509,10 +545,12 @@ const ScanCentresRouteWithChildren = ScanCentresRoute._addFileChildren(
 
 interface ScanTestsModalityRouteChildren {
   ScanTestsModalityDetailRoute: typeof ScanTestsModalityDetailRoute
+  ScanTestsModalityIndexRoute: typeof ScanTestsModalityIndexRoute
 }
 
 const ScanTestsModalityRouteChildren: ScanTestsModalityRouteChildren = {
   ScanTestsModalityDetailRoute: ScanTestsModalityDetailRoute,
+  ScanTestsModalityIndexRoute: ScanTestsModalityIndexRoute,
 }
 
 const ScanTestsModalityRouteWithChildren =
