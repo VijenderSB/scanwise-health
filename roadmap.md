@@ -4,4 +4,4 @@
 - [x] Build home, directories, modality, scan, city, centre, oncology, therapy, and guide routes
 - [x] Build enquiry workflow and confirmation
 - [x] Build protected admin sign-in and management tables
-- [ ] Verify security, build, desktop, and mobile behavior
+- [x] Verify security, build, desktop, and mobile behavior
