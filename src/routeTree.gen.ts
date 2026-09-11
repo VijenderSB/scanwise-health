@@ -10,8 +10,14 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ScanCentresRouteImport } from './routes/scan-centres'
+import { Route as ScanTestsRouteImport } from './routes/scan-tests'
+import { Route as ScanCentresIndexRouteImport } from './routes/scan-centres.index'
+import { Route as ScanCentresCityRouteImport } from './routes/scan-centres.$city'
+import { Route as ScanCentresSlugRouteImport } from './routes/scan-centres.$slug'
 import { Route as ScanTestsIndexRouteImport } from './routes/scan-tests.index'
 import { Route as ScanTestsModalityRouteImport } from './routes/scan-tests.$modality'
+import { Route as ScanCentresCitySlugRouteImport } from './routes/scan-centres.$city.$slug'
 import { Route as ScanTestsModalityDetailRouteImport } from './routes/scan-tests.$modality.$detail'
 
 const IndexRoute = IndexRouteImport.update({
@@ -19,15 +25,45 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ScanTestsIndexRoute = ScanTestsIndexRouteImport.update({
-  id: '/scan-tests/',
-  path: '/scan-tests/',
+const ScanCentresRoute = ScanCentresRouteImport.update({
+  id: '/scan-centres',
+  path: '/scan-centres',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ScanTestsModalityRoute = ScanTestsModalityRouteImport.update({
-  id: '/scan-tests/$modality',
-  path: '/scan-tests/$modality',
+const ScanTestsRoute = ScanTestsRouteImport.update({
+  id: '/scan-tests',
+  path: '/scan-tests',
   getParentRoute: () => rootRouteImport,
+} as any)
+const ScanCentresIndexRoute = ScanCentresIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ScanCentresRoute,
+} as any)
+const ScanCentresCityRoute = ScanCentresCityRouteImport.update({
+  id: '/$city',
+  path: '/$city',
+  getParentRoute: () => ScanCentresRoute,
+} as any)
+const ScanCentresSlugRoute = ScanCentresSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => ScanCentresRoute,
+} as any)
+const ScanTestsIndexRoute = ScanTestsIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ScanTestsRoute,
+} as any)
+const ScanTestsModalityRoute = ScanTestsModalityRouteImport.update({
+  id: '/$modality',
+  path: '/$modality',
+  getParentRoute: () => ScanTestsRoute,
+} as any)
+const ScanCentresCitySlugRoute = ScanCentresCitySlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => ScanCentresCityRoute,
 } as any)
 const ScanTestsModalityDetailRoute = ScanTestsModalityDetailRouteImport.update({
   id: '/$detail',
@@ -37,48 +73,80 @@ const ScanTestsModalityDetailRoute = ScanTestsModalityDetailRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/scan-centres': typeof ScanCentresRouteWithChildren
+  '/scan-tests': typeof ScanTestsRouteWithChildren
+  '/scan-centres/$city': typeof ScanCentresCityRouteWithChildren
+  '/scan-centres/$slug': typeof ScanCentresSlugRoute
   '/scan-tests/$modality': typeof ScanTestsModalityRouteWithChildren
+  '/scan-centres/': typeof ScanCentresIndexRoute
   '/scan-tests/': typeof ScanTestsIndexRoute
+  '/scan-centres/$city/$slug': typeof ScanCentresCitySlugRoute
   '/scan-tests/$modality/$detail': typeof ScanTestsModalityDetailRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/scan-centres/$city': typeof ScanCentresCityRouteWithChildren
+  '/scan-centres/$slug': typeof ScanCentresSlugRoute
   '/scan-tests/$modality': typeof ScanTestsModalityRouteWithChildren
+  '/scan-centres': typeof ScanCentresIndexRoute
   '/scan-tests': typeof ScanTestsIndexRoute
+  '/scan-centres/$city/$slug': typeof ScanCentresCitySlugRoute
   '/scan-tests/$modality/$detail': typeof ScanTestsModalityDetailRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/scan-centres': typeof ScanCentresRouteWithChildren
+  '/scan-tests': typeof ScanTestsRouteWithChildren
+  '/scan-centres/$city': typeof ScanCentresCityRouteWithChildren
+  '/scan-centres/$slug': typeof ScanCentresSlugRoute
   '/scan-tests/$modality': typeof ScanTestsModalityRouteWithChildren
+  '/scan-centres/': typeof ScanCentresIndexRoute
   '/scan-tests/': typeof ScanTestsIndexRoute
+  '/scan-centres/$city/$slug': typeof ScanCentresCitySlugRoute
   '/scan-tests/$modality/$detail': typeof ScanTestsModalityDetailRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/scan-centres'
+    | '/scan-tests'
+    | '/scan-centres/$city'
+    | '/scan-centres/$slug'
     | '/scan-tests/$modality'
+    | '/scan-centres/'
     | '/scan-tests/'
+    | '/scan-centres/$city/$slug'
     | '/scan-tests/$modality/$detail'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/scan-centres/$city'
+    | '/scan-centres/$slug'
     | '/scan-tests/$modality'
+    | '/scan-centres'
     | '/scan-tests'
+    | '/scan-centres/$city/$slug'
     | '/scan-tests/$modality/$detail'
   id:
     | '__root__'
     | '/'
+    | '/scan-centres'
+    | '/scan-tests'
+    | '/scan-centres/$city'
+    | '/scan-centres/$slug'
     | '/scan-tests/$modality'
+    | '/scan-centres/'
     | '/scan-tests/'
+    | '/scan-centres/$city/$slug'
     | '/scan-tests/$modality/$detail'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  ScanTestsModalityRoute: typeof ScanTestsModalityRouteWithChildren
-  ScanTestsIndexRoute: typeof ScanTestsIndexRoute
+  ScanCentresRoute: typeof ScanCentresRouteWithChildren
+  ScanTestsRoute: typeof ScanTestsRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -90,19 +158,61 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/scan-centres': {
+      id: '/scan-centres'
+      path: '/scan-centres'
+      fullPath: '/scan-centres'
+      preLoaderRoute: typeof ScanCentresRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/scan-tests': {
+      id: '/scan-tests'
+      path: '/scan-tests'
+      fullPath: '/scan-tests'
+      preLoaderRoute: typeof ScanTestsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/scan-centres/': {
+      id: '/scan-centres/'
+      path: '/'
+      fullPath: '/scan-centres/'
+      preLoaderRoute: typeof ScanCentresIndexRouteImport
+      parentRoute: typeof ScanCentresRoute
+    }
+    '/scan-centres/$city': {
+      id: '/scan-centres/$city'
+      path: '/$city'
+      fullPath: '/scan-centres/$city'
+      preLoaderRoute: typeof ScanCentresCityRouteImport
+      parentRoute: typeof ScanCentresRoute
+    }
+    '/scan-centres/$slug': {
+      id: '/scan-centres/$slug'
+      path: '/$slug'
+      fullPath: '/scan-centres/$slug'
+      preLoaderRoute: typeof ScanCentresSlugRouteImport
+      parentRoute: typeof ScanCentresRoute
+    }
     '/scan-tests/': {
       id: '/scan-tests/'
-      path: '/scan-tests'
+      path: '/'
       fullPath: '/scan-tests/'
       preLoaderRoute: typeof ScanTestsIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof ScanTestsRoute
     }
     '/scan-tests/$modality': {
       id: '/scan-tests/$modality'
-      path: '/scan-tests/$modality'
+      path: '/$modality'
       fullPath: '/scan-tests/$modality'
       preLoaderRoute: typeof ScanTestsModalityRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof ScanTestsRoute
+    }
+    '/scan-centres/$city/$slug': {
+      id: '/scan-centres/$city/$slug'
+      path: '/$slug'
+      fullPath: '/scan-centres/$city/$slug'
+      preLoaderRoute: typeof ScanCentresCitySlugRouteImport
+      parentRoute: typeof ScanCentresCityRoute
     }
     '/scan-tests/$modality/$detail': {
       id: '/scan-tests/$modality/$detail'
@@ -113,6 +223,34 @@ declare module '@tanstack/react-router' {
     }
   }
 }
+
+interface ScanCentresCityRouteChildren {
+  ScanCentresCitySlugRoute: typeof ScanCentresCitySlugRoute
+}
+
+const ScanCentresCityRouteChildren: ScanCentresCityRouteChildren = {
+  ScanCentresCitySlugRoute: ScanCentresCitySlugRoute,
+}
+
+const ScanCentresCityRouteWithChildren = ScanCentresCityRoute._addFileChildren(
+  ScanCentresCityRouteChildren,
+)
+
+interface ScanCentresRouteChildren {
+  ScanCentresCityRoute: typeof ScanCentresCityRouteWithChildren
+  ScanCentresSlugRoute: typeof ScanCentresSlugRoute
+  ScanCentresIndexRoute: typeof ScanCentresIndexRoute
+}
+
+const ScanCentresRouteChildren: ScanCentresRouteChildren = {
+  ScanCentresCityRoute: ScanCentresCityRouteWithChildren,
+  ScanCentresSlugRoute: ScanCentresSlugRoute,
+  ScanCentresIndexRoute: ScanCentresIndexRoute,
+}
+
+const ScanCentresRouteWithChildren = ScanCentresRoute._addFileChildren(
+  ScanCentresRouteChildren,
+)
 
 interface ScanTestsModalityRouteChildren {
   ScanTestsModalityDetailRoute: typeof ScanTestsModalityDetailRoute
@@ -125,10 +263,24 @@ const ScanTestsModalityRouteChildren: ScanTestsModalityRouteChildren = {
 const ScanTestsModalityRouteWithChildren =
   ScanTestsModalityRoute._addFileChildren(ScanTestsModalityRouteChildren)
 
-const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
+interface ScanTestsRouteChildren {
+  ScanTestsModalityRoute: typeof ScanTestsModalityRouteWithChildren
+  ScanTestsIndexRoute: typeof ScanTestsIndexRoute
+}
+
+const ScanTestsRouteChildren: ScanTestsRouteChildren = {
   ScanTestsModalityRoute: ScanTestsModalityRouteWithChildren,
   ScanTestsIndexRoute: ScanTestsIndexRoute,
+}
+
+const ScanTestsRouteWithChildren = ScanTestsRoute._addFileChildren(
+  ScanTestsRouteChildren,
+)
+
+const rootRouteChildren: RootRouteChildren = {
+  IndexRoute: IndexRoute,
+  ScanCentresRoute: ScanCentresRouteWithChildren,
+  ScanTestsRoute: ScanTestsRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
