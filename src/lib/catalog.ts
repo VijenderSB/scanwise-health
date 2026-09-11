@@ -1,5 +1,16 @@
 export const cities = ["Delhi", "Gurgaon", "Noida", "Greater Noida", "Faridabad", "Ghaziabad"] as const;
 export const citySlugs: Record<string,string> = {delhi:"Delhi",gurgaon:"Gurgaon",noida:"Noida","greater-noida":"Greater Noida",faridabad:"Faridabad",ghaziabad:"Ghaziabad"};
+export const finalPriceDisclaimer = "Final price may vary by scan protocol, contrast or tracer requirement, city, centre and appointment availability.";
+export const topScanDeals = [
+ {name:"MRI Scan",price:"₹1,999",savings:"Preferential rate",location:"Delhi NCR",modality:"mri-scan"},
+ {name:"CT Scan",price:"₹999",savings:"Preferential rate",location:"Delhi NCR",modality:"ct-scan"},
+ {name:"PET-CT Scan",price:"₹9,999",savings:"Preferential rate",location:"Delhi NCR",modality:"pet-ct-scan"},
+ {name:"PSMA PET-CT",price:"Special patient rates available",savings:"Centre-specific savings",location:"Delhi NCR",modality:"pet-ct-scan"},
+ {name:"Ultrasound",price:"₹499",savings:"Preferential rate",location:"Delhi NCR",modality:"ultrasound"},
+ {name:"Digital X-Ray",price:"₹199",savings:"Preferential rate",location:"Delhi NCR",modality:"x-ray-fluoroscopy"},
+ {name:"Mammography",price:"₹999",savings:"Preferential rate",location:"Delhi NCR",modality:"mammography"},
+ {name:"DEXA Bone Density Scan",price:"₹999",savings:"Preferential rate",location:"Delhi NCR",modality:"dexa-scan"},
+] as const;
 export const categories = [
  {name:"MRI Scan",slug:"mri-scan",short:"Detailed soft-tissue imaging without ionising radiation.",types:["Brain MRI","Spine MRI","Knee MRI","Prostate mpMRI","MRCP"]},
  {name:"CT Scan",slug:"ct-scan",short:"Fast cross-sectional imaging for a wide range of clinical questions.",types:["CT Brain","HRCT Chest","CT Angiography","CT Abdomen"]},
