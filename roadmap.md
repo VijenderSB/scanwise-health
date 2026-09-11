@@ -5,3 +5,8 @@
 - [x] Build enquiry workflow and confirmation
 - [x] Build protected admin sign-in and management tables
 - [x] Verify security, build, desktop, and mobile behavior
+- [ ] Reposition the platform around scan comparison and partner savings
+- [ ] Add Top Scan Deals to the homepage and scan directory
+- [ ] Add transparent centre-price, BookMyScan-price, savings, locality, and verification states to listings
+- [ ] Add concierge pricing actions for PET-MRI and Lu-177 PSMA therapy
+- [ ] Verify updated pricing disclosures, navigation, desktop, and mobile behavior
