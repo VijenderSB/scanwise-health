@@ -11,5 +11,5 @@
 - [x] Add concierge pricing actions for PET-MRI and Lu-177 PSMA therapy
 - [x] Verify updated pricing disclosures, navigation, desktop, and mobile behavior
 
-- [ ] Import and normalize the uploaded 50-centre Delhi NCR directory
-- [ ] Verify centre filtering, profiles, and build health after import
+- [x] Import and normalize the uploaded 50-centre Delhi NCR directory
+- [x] Verify centre filtering, profiles, and build health after import
