@@ -101,7 +101,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         "@graph": [
           {
             "@type": "Organization",
-            "@id": "/#organization",
+            "@id": "https://savoscan.com/#organization",
             name: "SavoScan.com",
             slogan: "Your Scan. Your Savings.",
             description: "Radiology test discovery, price comparison and appointment-assistance platform serving Delhi NCR, India.",
@@ -109,10 +109,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           },
           {
             "@type": "WebSite",
-            "@id": "/#website",
+            "@id": "https://savoscan.com/#website",
             name: "SavoScan.com",
             description: "Compare radiology scan options and request appointment assistance across Delhi NCR.",
-            publisher: { "@id": "/#organization" },
+            publisher: { "@id": "https://savoscan.com/#organization" },
             inLanguage: "en-IN",
           },
         ],

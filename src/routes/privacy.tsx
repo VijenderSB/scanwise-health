@@ -9,10 +9,10 @@ export const Route = createFileRoute("/privacy")({
       { property: "og:title", content: "Privacy & Patient Data | SavoScan.com" },
       { property: "og:description", content: "How patient enquiry details and uploaded records are handled for scan appointment assistance." },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/privacy" },
+      { property: "og:url", content: "https://savoscan.com/privacy" },
       { name: "twitter:card", content: "summary" },
     ],
-    links: [{ rel: "canonical", href: "/privacy" }],
+    links: [{ rel: "canonical", href: "https://savoscan.com/privacy" }],
   }),
   component: PrivacyPage,
 });
