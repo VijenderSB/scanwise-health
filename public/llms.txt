@@ -1,0 +1,29 @@
+# SavoScan.com
+
+SavoScan.com is a radiology test discovery, price-comparison and appointment-assistance platform serving Delhi NCR, India.
+
+## Primary services
+- MRI and MRCP scan discovery
+- CT and spectral CT scan discovery
+- PET-CT, PET-MRI and nuclear medicine imaging guidance
+- Ultrasound, X-ray, DEXA and mammography discovery
+- Scan price and appointment assistance
+- Preparation and scan-comparison guides
+- Lu-177 PSMA treating-centre navigation
+
+## Service area
+Delhi, Gurgaon (Gurugram), Noida, Greater Noida, Faridabad and Ghaziabad.
+
+## Important safeguards
+SavoScan.com is a booking facilitator, not a medical provider. It does not diagnose, prescribe scans or make treatment decisions. Patients should always consult their treating doctor. Prices depend on the prescribed protocol, contrast or tracer requirements, city, centre and appointment availability. Centre directory details marked verification pending must be confirmed directly.
+
+## Key public pages
+- /scan-tests — radiology scan directory
+- /scan-centres — Delhi NCR imaging centre directory
+- /scan-cost — scan cost guidance
+- /preparation-guides — patient preparation guidance
+- /compare-scans — scan comparison guides
+- /advanced-cancer-imaging — specialist imaging pathways
+- /lu-177-psma-therapy — treating-centre navigation
+- /book-a-scan — price and appointment assistance
+- /privacy — patient data information
