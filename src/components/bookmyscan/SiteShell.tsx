@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
-import { ChevronDown, Menu, PhoneCall, ShieldCheck, X } from "lucide-react";
+import { ChevronDown, MapPin, Menu, MessageCircle, PhoneCall, ShieldCheck, X } from "lucide-react";
 import { LeadCapture } from "@/components/bookmyscan/LeadCapture";
 import { Button } from "@/components/ui/button";
 import {
@@ -15,6 +15,24 @@ const nav = [
   ["Advanced Cancer Imaging", "/advanced-cancer-imaging"],
   ["Lu‑177 PSMA Therapy", "/lu-177-psma-therapy"],
   ["Scan Cost Guide", "/scan-cost"],
+] as const;
+
+const popularScans = [
+  ["MRI Scan", "/scan-tests/mri-scan"],
+  ["MRCP Scan", "/scan-tests/mri-scan/mrcp"],
+  ["CT Scan", "/scan-tests/ct-scan"],
+  ["PET-CT Scan", "/scan-tests/pet-ct-scan"],
+  ["Ultrasound", "/scan-tests/ultrasound"],
+  ["Mammography", "/scan-tests/mammography"],
+] as const;
+
+const cityLinks = [
+  ["Delhi", "/scan-centres/delhi"],
+  ["Gurgaon", "/scan-centres/gurgaon"],
+  ["Noida", "/scan-centres/noida"],
+  ["Faridabad", "/scan-centres/faridabad"],
+  ["Ghaziabad", "/scan-centres/ghaziabad"],
+  ["Greater Noida", "/scan-centres/greater-noida"],
 ] as const;
 
 export function SiteShell({ children }: { children: ReactNode }) {
@@ -97,27 +115,42 @@ export function SiteShell({ children }: { children: ReactNode }) {
         )}
       </header>
       <main>{children}</main>
-      <footer className="bg-primary text-primary-foreground">
-        <div className="page-wrap grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-4">
+      <footer className="site-footer">
+        <div className="page-wrap footer-action">
           <div>
+            <p className="eyebrow eyebrow-light">Radiology support across Delhi NCR</p>
+            <h2>Compare the prescribed scan before you book.</h2>
+            <p>Review available centres, protocol details and total payable prices with patient-focused assistance.</p>
+          </div>
+          <div className="footer-action-buttons">
+            <Button asChild variant="hero" size="lg"><Link to="/book-a-scan"><PhoneCall />Check Scan Price</Link></Button>
+            <Button asChild variant="outline" size="lg" className="footer-outline"><a href="https://wa.me/919990519519" target="_blank" rel="noreferrer"><MessageCircle />WhatsApp</a></Button>
+          </div>
+        </div>
+        <div className="footer-divider" />
+        <div className="page-wrap footer-grid">
+          <div className="footer-about">
             <div className="brand-lockup">
               <div className="brand-mark brand-mark-inverse"><span>Savo</span>Scan.com</div>
               <div className="brand-tagline brand-tagline-inverse">Your Scan. Your Savings.</div>
             </div>
-            <p className="mt-4 text-sm leading-6 text-primary-foreground/75">Compare scan centres, review preferential rates and request appointment support across Delhi NCR.</p>
+            <p>Radiology test discovery, price comparison and appointment assistance for patients across Delhi NCR, India.</p>
+            <div className="footer-service-area"><MapPin />Delhi · Gurgaon · Noida · Faridabad · Ghaziabad · Greater Noida</div>
           </div>
-          <FooterLinks title="Explore" links={[["Scan Tests", "/scan-tests"], ["Scan Centres", "/scan-centres"], ["Preparation Guides", "/preparation-guides"], ["Compare Scans", "/compare-scans"]]} />
-          <FooterLinks title="Delhi NCR" links={[["Delhi", "/scan-centres/delhi"], ["Gurgaon", "/scan-centres/gurgaon"], ["Noida", "/scan-centres/noida"], ["Faridabad", "/scan-centres/faridabad"]]} />
+          <FooterLinks title="Popular scans" links={popularScans} />
+          <FooterLinks title="Scan centres" links={cityLinks} />
+          <FooterLinks title="Patient resources" links={[["All Scan Tests", "/scan-tests"], ["Compare Scans", "/compare-scans"], ["Scan Cost Guide", "/scan-cost"], ["Preparation Guides", "/preparation-guides"], ["Advanced Cancer Imaging", "/advanced-cancer-imaging"], ["Privacy", "/privacy"]]} />
           <div>
             <h3 className="footer-title">Patient safety</h3>
-            <p className="text-sm leading-6 text-primary-foreground/75">Not for emergencies, diagnosis or treatment recommendations. In an emergency, call 112 or visit the nearest hospital.</p>
-            <div className="mt-4 flex items-center gap-2 text-xs"><ShieldCheck className="size-4 text-accent" />Privacy-conscious assistance</div>
+            <p className="footer-safety-copy">SavoScan.com is a booking facilitator, not a medical provider. It does not diagnose, recommend tests or make treatment decisions.</p>
+            <p className="footer-emergency">For an emergency, call 112 or visit the nearest hospital.</p>
+            <div className="footer-trust"><ShieldCheck />Privacy-conscious assistance</div>
           </div>
         </div>
-        <div className="border-t border-primary-foreground/15">
-          <div className="page-wrap flex flex-col gap-3 py-5 text-xs text-primary-foreground/65 md:flex-row md:justify-between">
+        <div className="footer-bottom">
+          <div className="page-wrap footer-bottom-inner">
             <p>© 2026 SavoScan.com. Scan comparison and appointment-assistance platform.</p>
-            <p>Final prices and clinical decisions remain with centres and qualified doctors.</p>
+            <p>Final prices depend on protocol and centre confirmation. Always consult your treating doctor.</p>
           </div>
         </div>
       </footer>
