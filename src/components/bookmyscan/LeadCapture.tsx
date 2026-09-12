@@ -27,7 +27,7 @@ export function LeadCapture(){
   const interval=window.setInterval(()=>setSeconds(value=>Math.max(0,value-1)),1000);
   const timeout=window.setTimeout(()=>{window.clearInterval(interval);sessionStorage.setItem(POPUP_KEY,"true");setOpen(true)},20000);
   return()=>{window.clearInterval(interval);window.clearTimeout(timeout)};
- },[excluded,pathname]);
+ },[excluded]);
 
  function changeOpen(next:boolean){setOpen(next);if(!next)sessionStorage.setItem(POPUP_KEY,"true")}
  async function onSubmit(event:React.FormEvent<HTMLFormElement>){
