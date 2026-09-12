@@ -83,7 +83,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "description", content: "Find radiology tests, compare demo centre capabilities and request scan appointment support across Delhi NCR." },
       { name: "author", content: "SavoScan.com" },
       { property: "og:title", content: "SavoScan.com" },
-      { property: "og:description", content: "Find the right scan. Choose the right centre." },
+      { property: "og:description", content: "Your Scan. Your Savings." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],

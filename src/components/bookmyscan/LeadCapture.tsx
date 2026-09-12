@@ -6,7 +6,8 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } f
 import { categories, popularScanEstimates } from "@/lib/catalog";
 import { createQuickEnquiry } from "@/lib/enquiries.functions";
 
-const POPUP_KEY="bookmyscan-lead-popup-seen";
+const POPUP_KEY="savoscan-lead-popup-seen";
+const LEGACY_POPUP_KEY="bookmyscan-lead-popup-seen";
 const EXCLUDED_PATHS=["/admin","/auth","/book-a-scan","/booking-confirmation"];
 const whatsappUrl=`https://wa.me/919990519519?text=${encodeURIComponent("Hello SavoScan.com, I need help comparing scan prices and booking a radiology scan.")}`;
 
@@ -29,7 +30,7 @@ export function LeadCapture(){
  },[]);
 
  useEffect(()=>{
-  if(excluded||sessionStorage.getItem(POPUP_KEY))return;
+   if(excluded||sessionStorage.getItem(POPUP_KEY)||sessionStorage.getItem(LEGACY_POPUP_KEY))return;
   setSeconds(20);
   const interval=window.setInterval(()=>setSeconds(value=>Math.max(0,value-1)),1000);
   const timeout=window.setTimeout(()=>{window.clearInterval(interval);sessionStorage.setItem(POPUP_KEY,"true");setOpen(true)},20000);
