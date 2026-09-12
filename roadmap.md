@@ -19,3 +19,5 @@
 - [x] Add MRCP across catalogue, search, pricing, centre profiles, and its detail page
 - [x] Add personal savings summaries to booking and confirmation flows
 - [x] Verify pricing rules, offer expiry, statistics visibility, sorting, booking, and mobile behavior
+- [x] Add the 20-second lead popup, short secure form, and WhatsApp contact button
+- [x] Verify popup persistence, submission, WhatsApp link, accessibility, and responsive placement
