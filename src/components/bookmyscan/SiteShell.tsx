@@ -28,8 +28,9 @@ export function SiteShell({ children }: { children: ReactNode }) {
       </div>
       <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur">
         <div className="page-wrap flex h-18 items-center justify-between gap-5">
-          <Link to="/" className="brand-mark" aria-label="BookMyScan.in home">
-            <span>BookMy</span>Scan.in
+          <Link to="/" className="brand-lockup" aria-label="SavoScan.com home">
+            <span className="brand-mark"><span>Savo</span>Scan.com</span>
+            <span className="brand-tagline">Your Scan. Your Savings.</span>
           </Link>
           <nav className="hidden items-center gap-5 xl:flex" aria-label="Main navigation">
             <ScanTestsDropdown />
@@ -99,7 +100,10 @@ export function SiteShell({ children }: { children: ReactNode }) {
       <footer className="bg-primary text-primary-foreground">
         <div className="page-wrap grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-4">
           <div>
-            <div className="brand-mark brand-mark-inverse"><span>BookMy</span>Scan.in</div>
+            <div className="brand-lockup">
+              <div className="brand-mark brand-mark-inverse"><span>Savo</span>Scan.com</div>
+              <div className="brand-tagline brand-tagline-inverse">Your Scan. Your Savings.</div>
+            </div>
             <p className="mt-4 text-sm leading-6 text-primary-foreground/75">Compare scan centres, review preferential rates and request appointment support across Delhi NCR.</p>
           </div>
           <FooterLinks title="Explore" links={[["Scan Tests", "/scan-tests"], ["Scan Centres", "/scan-centres"], ["Preparation Guides", "/preparation-guides"], ["Compare Scans", "/compare-scans"]]} />
@@ -112,7 +116,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
         </div>
         <div className="border-t border-primary-foreground/15">
           <div className="page-wrap flex flex-col gap-3 py-5 text-xs text-primary-foreground/65 md:flex-row md:justify-between">
-            <p>© 2026 BookMyScan.in. Scan comparison and appointment-assistance platform.</p>
+            <p>© 2026 SavoScan.com. Scan comparison and appointment-assistance platform.</p>
             <p>Final prices and clinical decisions remain with centres and qualified doctors.</p>
           </div>
         </div>
