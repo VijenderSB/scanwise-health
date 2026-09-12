@@ -4,6 +4,8 @@ export const finalPriceDisclaimer = "Final price may vary by scan protocol, cont
 export type ScanOffer = {id:string;protocolCode:string;scanName:string;centreName:string;locality:string;inclusions:string[];exclusions:string[];regularPriceInr:number;offerPriceInr:number;mandatoryChargesInr:number;verified:boolean;validFrom:string;validUntil:string;limitedSlots:boolean;distanceKm?:number};
 export const verifiedScanOffers: ScanOffer[] = [];
 export function getCurrentVerifiedOffers(now=new Date()){return verifiedScanOffers.filter(offer=>offer.verified&&new Date(offer.validFrom)<=now&&new Date(offer.validUntil)>now&&offer.regularPriceInr>offer.offerPriceInr+offer.mandatoryChargesInr)}
+export type VerifiedPlatformStats={totalSavingsInr:number;completedScans:number;activeCentres:number;maxDiscountPercent:number;verifiedAt:string};
+export const verifiedPlatformStats:VerifiedPlatformStats|null=null;
 export const popularScanEstimates = [
  {name:"MRI Brain",protocolCode:"mri-brain",estimatedMinInr:3500,estimatedMaxInr:8500,inclusions:"Exact sequences and contrast status confirmed from the prescription."},
  {name:"MRI Lumbar Spine",protocolCode:"mri-lumbar-spine",inclusions:"Protocol, contrast and reporting inclusions confirmed before booking."},

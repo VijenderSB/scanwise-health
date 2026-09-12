@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, BadgeCheck, IndianRupee, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { finalPriceDisclaimer, getCurrentVerifiedOffers, popularScanEstimates, type ScanOffer } from "@/lib/catalog";
+import { finalPriceDisclaimer, getCurrentVerifiedOffers, popularScanEstimates, verifiedPlatformStats, type ScanOffer } from "@/lib/catalog";
 
 type SortMode = "discount" | "savings" | "price" | "nearest";
 
@@ -20,6 +20,12 @@ function discount(offer: ScanOffer) {
 
 export function PopularScanOffers() {
   return <div className="popular-offer-grid">{popularScanEstimates.map((scan) => {const hasEstimate="estimatedMinInr" in scan&&"estimatedMaxInr" in scan;return <article className="popular-offer-card" key={scan.protocolCode}><div><span className="estimate-label">{hasEstimate?"Indicative estimate":"Special rate review"}</span><h3>{scan.name}</h3>{"expandedName" in scan && scan.expandedName && <p className="scan-expanded-name">{scan.expandedName}</p>}</div><div className="estimated-price">{hasEstimate?`₹${scan.estimatedMinInr.toLocaleString("en-IN")}–₹${scan.estimatedMaxInr.toLocaleString("en-IN")}`:"Price confirmed after review"}</div><p className="offer-location"><MapPin /> Delhi NCR · centre confirmed after review</p><p className="offer-inclusions">{scan.inclusions}</p><p className="price-disclaimer">Final price confirmed after centre and protocol review. {finalPriceDisclaimer}</p><Button asChild className="mt-auto w-full"><Link to="/book-a-scan" search={{scan:scan.name,protocol:scan.protocolCode,centre:""}}>Check Availability <ArrowRight /></Link></Button></article>})}</div>;
+}
+
+export function SavingsStatistics() {
+  if (!verifiedPlatformStats) return null;
+  const stats=[{value:`₹${verifiedPlatformStats.totalSavingsInr.toLocaleString("en-IN")}`,label:"Saved by patients through BookMyScan"},{value:`${verifiedPlatformStats.completedScans.toLocaleString("en-IN")}+`,label:"Scans completed"},{value:`${verifiedPlatformStats.activeCentres.toLocaleString("en-IN")}+`,label:"Active partner imaging centres"},{value:`Up to ${verifiedPlatformStats.maxDiscountPercent}%`,label:"Off selected scans"}];
+  return <section className="savings-stat-band" aria-label="Verified BookMyScan savings statistics"><div className="page-wrap savings-stats">{stats.map(stat=><div key={stat.label}><strong>{stat.value}</strong><span>{stat.label}</span></div>)}</div></section>;
 }
 
 export function HighestDiscounts() {
