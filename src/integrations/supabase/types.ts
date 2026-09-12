@@ -178,15 +178,25 @@ export type Database = {
           city: string
           consent_given: boolean
           created_at: string
+          discount_percent: number | null
           email: string | null
           id: string
+          mandatory_charges_inr: number | null
           mobile: string
           name: string
           notes: string | null
+          offer_id: string | null
+          offer_price_inr: number | null
           preferred_date: string | null
           preferred_locality: string | null
+          price_verified: boolean
+          pricing_snapshot: Json | null
+          protocol_code: string | null
           reference_code: string
+          regular_price_inr: number | null
+          savings_inr: number | null
           scan_type: string
+          selected_centre_id: string | null
           source_path: string
           status: Database["public"]["Enums"]["enquiry_status"]
           updated_at: string
@@ -195,15 +205,25 @@ export type Database = {
           city: string
           consent_given: boolean
           created_at?: string
+          discount_percent?: number | null
           email?: string | null
           id?: string
+          mandatory_charges_inr?: number | null
           mobile: string
           name: string
           notes?: string | null
+          offer_id?: string | null
+          offer_price_inr?: number | null
           preferred_date?: string | null
           preferred_locality?: string | null
+          price_verified?: boolean
+          pricing_snapshot?: Json | null
+          protocol_code?: string | null
           reference_code: string
+          regular_price_inr?: number | null
+          savings_inr?: number | null
           scan_type: string
+          selected_centre_id?: string | null
           source_path?: string
           status?: Database["public"]["Enums"]["enquiry_status"]
           updated_at?: string
@@ -212,20 +232,45 @@ export type Database = {
           city?: string
           consent_given?: boolean
           created_at?: string
+          discount_percent?: number | null
           email?: string | null
           id?: string
+          mandatory_charges_inr?: number | null
           mobile?: string
           name?: string
           notes?: string | null
+          offer_id?: string | null
+          offer_price_inr?: number | null
           preferred_date?: string | null
           preferred_locality?: string | null
+          price_verified?: boolean
+          pricing_snapshot?: Json | null
+          protocol_code?: string | null
           reference_code?: string
+          regular_price_inr?: number | null
+          savings_inr?: number | null
           scan_type?: string
+          selected_centre_id?: string | null
           source_path?: string
           status?: Database["public"]["Enums"]["enquiry_status"]
           updated_at?: string
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "enquiries_offer_id_fkey"
+            columns: ["offer_id"]
+            isOneToOne: false
+            referencedRelation: "scan_offers"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "enquiries_selected_centre_id_fkey"
+            columns: ["selected_centre_id"]
+            isOneToOne: false
+            referencedRelation: "centres"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       enquiry_uploads: {
         Row: {
@@ -369,6 +414,90 @@ export type Database = {
           updated_at?: string
         }
         Relationships: []
+      }
+      scan_offers: {
+        Row: {
+          centre_id: string
+          created_at: string
+          exclusions: string[]
+          id: string
+          inclusions: string[]
+          latitude: number | null
+          limited_slots: boolean
+          longitude: number | null
+          mandatory_charges_inr: number
+          offer_price_inr: number
+          protocol_code: string
+          regular_price_inr: number
+          scan_name: string
+          scan_type_id: string | null
+          terms: string
+          updated_at: string
+          valid_from: string
+          valid_until: string
+          verified: boolean
+          verified_at: string | null
+        }
+        Insert: {
+          centre_id: string
+          created_at?: string
+          exclusions?: string[]
+          id?: string
+          inclusions?: string[]
+          latitude?: number | null
+          limited_slots?: boolean
+          longitude?: number | null
+          mandatory_charges_inr?: number
+          offer_price_inr: number
+          protocol_code: string
+          regular_price_inr: number
+          scan_name: string
+          scan_type_id?: string | null
+          terms?: string
+          updated_at?: string
+          valid_from?: string
+          valid_until: string
+          verified?: boolean
+          verified_at?: string | null
+        }
+        Update: {
+          centre_id?: string
+          created_at?: string
+          exclusions?: string[]
+          id?: string
+          inclusions?: string[]
+          latitude?: number | null
+          limited_slots?: boolean
+          longitude?: number | null
+          mandatory_charges_inr?: number
+          offer_price_inr?: number
+          protocol_code?: string
+          regular_price_inr?: number
+          scan_name?: string
+          scan_type_id?: string | null
+          terms?: string
+          updated_at?: string
+          valid_from?: string
+          valid_until?: string
+          verified?: boolean
+          verified_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "scan_offers_centre_id_fkey"
+            columns: ["centre_id"]
+            isOneToOne: false
+            referencedRelation: "centres"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "scan_offers_scan_type_id_fkey"
+            columns: ["scan_type_id"]
+            isOneToOne: false
+            referencedRelation: "scan_types"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       scan_types: {
         Row: {
