@@ -1,7 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
 import { Activity, ChevronDown, MapPin, Menu, MessageCircle, PhoneCall, ShieldCheck, X } from "lucide-react";
-import { LeadCapture } from "@/components/bookmyscan/LeadCapture";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -34,6 +33,8 @@ const cityLinks = [
   ["Ghaziabad", "/scan-centres/ghaziabad"],
   ["Greater Noida", "/scan-centres/greater-noida"],
 ] as const;
+
+const whatsappUrl = `https://wa.me/919990519519?text=${encodeURIComponent("Hello SavoScan.com, I need help comparing scan prices and booking a radiology scan.")}`;
 
 export function SiteShell({ children }: { children: ReactNode }) {
   const [open, setOpen] = useState(false);
@@ -154,7 +155,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
           </div>
         </div>
       </footer>
-      <LeadCapture />
+      <a className="whatsapp-button" href={whatsappUrl} target="_blank" rel="noreferrer" aria-label="Chat with SavoScan on WhatsApp"><MessageCircle /><span>WhatsApp</span></a>
       <div className="mobile-price-cta">
         <Button asChild size="lg"><Link to="/book-a-scan"><PhoneCall />Check Scan Price</Link></Button>
       </div>
