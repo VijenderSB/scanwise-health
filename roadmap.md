@@ -14,8 +14,8 @@
 - [x] Import and normalize the uploaded 50-centre Delhi NCR directory
 - [x] Verify centre filtering, profiles, and build health after import
 
-- [ ] Reposition the homepage around scan offers and prominent verified savings
-- [ ] Add discount-led popular scan discovery and offer sorting
-- [ ] Add MRCP across catalogue, search, pricing, centre profiles, and its detail page
-- [ ] Add personal savings summaries to booking and confirmation flows
-- [ ] Verify pricing rules, offer expiry, statistics visibility, sorting, booking, and mobile behavior
+- [x] Reposition the homepage around scan offers and prominent verified savings
+- [x] Add discount-led popular scan discovery and offer sorting
+- [x] Add MRCP across catalogue, search, pricing, centre profiles, and its detail page
+- [x] Add personal savings summaries to booking and confirmation flows
+- [x] Verify pricing rules, offer expiry, statistics visibility, sorting, booking, and mobile behavior
