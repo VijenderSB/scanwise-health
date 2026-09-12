@@ -94,6 +94,30 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
     ],
+    scripts: [{
+      type: "application/ld+json",
+      children: JSON.stringify({
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://savoscan.com/#organization",
+            name: "SavoScan.com",
+            slogan: "Your Scan. Your Savings.",
+            description: "Radiology test discovery, price comparison and appointment-assistance platform serving Delhi NCR, India.",
+            areaServed: ["Delhi", "Gurgaon", "Noida", "Greater Noida", "Faridabad", "Ghaziabad"],
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://savoscan.com/#website",
+            name: "SavoScan.com",
+            description: "Compare radiology scan options and request appointment assistance across Delhi NCR.",
+            publisher: { "@id": "https://savoscan.com/#organization" },
+            inLanguage: "en-IN",
+          },
+        ],
+      }),
+    }],
   }),
   shellComponent: RootShell,
   component: RootComponent,

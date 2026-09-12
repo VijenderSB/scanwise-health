@@ -19,6 +19,7 @@ import { Route as CompareScansRouteImport } from './routes/compare-scans'
 import { Route as ConditionsRouteImport } from './routes/conditions'
 import { Route as Lu177PsmaTherapyRouteImport } from './routes/lu-177-psma-therapy'
 import { Route as PreparationGuidesRouteImport } from './routes/preparation-guides'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ScanCentresRouteImport } from './routes/scan-centres'
 import { Route as ScanCostRouteImport } from './routes/scan-cost'
 import { Route as ScanTestsRouteImport } from './routes/scan-tests'
@@ -81,6 +82,11 @@ const Lu177PsmaTherapyRoute = Lu177PsmaTherapyRouteImport.update({
 const PreparationGuidesRoute = PreparationGuidesRouteImport.update({
   id: '/preparation-guides',
   path: '/preparation-guides',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ScanCentresRoute = ScanCentresRouteImport.update({
@@ -164,6 +170,7 @@ export interface FileRoutesByFullPath {
   '/conditions': typeof ConditionsRouteWithChildren
   '/lu-177-psma-therapy': typeof Lu177PsmaTherapyRoute
   '/preparation-guides': typeof PreparationGuidesRoute
+  '/privacy': typeof PrivacyRoute
   '/scan-centres': typeof ScanCentresRouteWithChildren
   '/scan-cost': typeof ScanCostRoute
   '/scan-tests': typeof ScanTestsRouteWithChildren
@@ -189,6 +196,7 @@ export interface FileRoutesByTo {
   '/conditions': typeof ConditionsRouteWithChildren
   '/lu-177-psma-therapy': typeof Lu177PsmaTherapyRoute
   '/preparation-guides': typeof PreparationGuidesRoute
+  '/privacy': typeof PrivacyRoute
   '/scan-cost': typeof ScanCostRoute
   '/admin': typeof AuthenticatedAdminRoute
   '/conditions/$slug': typeof ConditionsSlugRoute
@@ -212,6 +220,7 @@ export interface FileRoutesById {
   '/conditions': typeof ConditionsRouteWithChildren
   '/lu-177-psma-therapy': typeof Lu177PsmaTherapyRoute
   '/preparation-guides': typeof PreparationGuidesRoute
+  '/privacy': typeof PrivacyRoute
   '/scan-centres': typeof ScanCentresRouteWithChildren
   '/scan-cost': typeof ScanCostRoute
   '/scan-tests': typeof ScanTestsRouteWithChildren
@@ -239,6 +248,7 @@ export interface FileRouteTypes {
     | '/conditions'
     | '/lu-177-psma-therapy'
     | '/preparation-guides'
+    | '/privacy'
     | '/scan-centres'
     | '/scan-cost'
     | '/scan-tests'
@@ -264,6 +274,7 @@ export interface FileRouteTypes {
     | '/conditions'
     | '/lu-177-psma-therapy'
     | '/preparation-guides'
+    | '/privacy'
     | '/scan-cost'
     | '/admin'
     | '/conditions/$slug'
@@ -286,6 +297,7 @@ export interface FileRouteTypes {
     | '/conditions'
     | '/lu-177-psma-therapy'
     | '/preparation-guides'
+    | '/privacy'
     | '/scan-centres'
     | '/scan-cost'
     | '/scan-tests'
@@ -313,6 +325,7 @@ export interface RootRouteChildren {
   ConditionsRoute: typeof ConditionsRouteWithChildren
   Lu177PsmaTherapyRoute: typeof Lu177PsmaTherapyRoute
   PreparationGuidesRoute: typeof PreparationGuidesRoute
+  PrivacyRoute: typeof PrivacyRoute
   ScanCentresRoute: typeof ScanCentresRouteWithChildren
   ScanCostRoute: typeof ScanCostRoute
   ScanTestsRoute: typeof ScanTestsRouteWithChildren
@@ -389,6 +402,13 @@ declare module '@tanstack/react-router' {
       path: '/preparation-guides'
       fullPath: '/preparation-guides'
       preLoaderRoute: typeof PreparationGuidesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/scan-centres': {
@@ -581,6 +601,7 @@ const rootRouteChildren: RootRouteChildren = {
   ConditionsRoute: ConditionsRouteWithChildren,
   Lu177PsmaTherapyRoute: Lu177PsmaTherapyRoute,
   PreparationGuidesRoute: PreparationGuidesRoute,
+  PrivacyRoute: PrivacyRoute,
   ScanCentresRoute: ScanCentresRouteWithChildren,
   ScanCostRoute: ScanCostRoute,
   ScanTestsRoute: ScanTestsRouteWithChildren,
