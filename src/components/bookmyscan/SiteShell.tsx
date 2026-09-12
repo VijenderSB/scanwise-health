@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
-import { ChevronDown, MapPin, Menu, MessageCircle, PhoneCall, ShieldCheck, X } from "lucide-react";
+import { Activity, ChevronDown, MapPin, Menu, MessageCircle, PhoneCall, ShieldCheck, X } from "lucide-react";
 import { LeadCapture } from "@/components/bookmyscan/LeadCapture";
 import { Button } from "@/components/ui/button";
 import {
@@ -41,8 +41,8 @@ export function SiteShell({ children }: { children: ReactNode }) {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <div className="bg-primary px-4 py-2 text-center text-xs text-primary-foreground">
-        Compare prices only after confirming the prescribed protocol. Always consult your treating doctor.
+      <div className="clinical-topbar">
+        <div className="page-wrap clinical-topbar-inner"><span><Activity /> Radiology scan coordination across Delhi NCR</span><span>Always consult your treating doctor</span></div>
       </div>
       <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur">
         <div className="page-wrap flex h-18 items-center justify-between gap-5">
@@ -59,9 +59,9 @@ export function SiteShell({ children }: { children: ReactNode }) {
             ))}
           </nav>
           <div className="hidden lg:block">
-            <Button asChild size="lg">
+            <div className="header-assist"><span>Need scan assistance?</span><Button asChild size="lg">
               <Link to="/book-a-scan"><PhoneCall />Check Scan Price</Link>
-            </Button>
+            </Button></div>
           </div>
           <Button
             variant="ghost"

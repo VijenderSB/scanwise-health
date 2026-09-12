@@ -23,3 +23,5 @@
 - [x] Verify popup persistence, submission, WhatsApp link, accessibility, and responsive placement
 
 - [x] Complete route metadata, structured data, Delhi NCR discovery signals, and footer improvements
+- [x] Refresh the shared shell and homepage with a premium radiology imaging-centre visual system
+- [x] Verify the visual refresh across desktop and mobile without disrupting conversion flows
