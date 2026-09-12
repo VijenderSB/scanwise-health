@@ -28,7 +28,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
       </div>
       <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur">
         <div className="page-wrap flex h-18 items-center justify-between gap-5">
-          <Link to="/" className="brand-mark" aria-label="BookMyScan.in home">
+          <Link to="/" className="brand-mark" aria-label="SavoScan.com home">
             <span>BookMy</span>Scan.in
           </Link>
           <nav className="hidden items-center gap-5 xl:flex" aria-label="Main navigation">
@@ -112,7 +112,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
         </div>
         <div className="border-t border-primary-foreground/15">
           <div className="page-wrap flex flex-col gap-3 py-5 text-xs text-primary-foreground/65 md:flex-row md:justify-between">
-            <p>© 2026 BookMyScan.in. Scan comparison and appointment-assistance platform.</p>
+            <p>© 2026 SavoScan.com. Scan comparison and appointment-assistance platform.</p>
             <p>Final prices and clinical decisions remain with centres and qualified doctors.</p>
           </div>
         </div>

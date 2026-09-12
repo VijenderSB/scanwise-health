@@ -7,7 +7,7 @@
 - [x] Verify security, build, desktop, and mobile behavior
 - [x] Reposition the platform around scan comparison and partner savings
 - [x] Add Top Scan Deals to the homepage and scan directory
-- [x] Add transparent centre-price, BookMyScan-price, savings, locality, and verification states to listings
+- [x] Add transparent centre-price, SavoScan-price, savings, locality, and verification states to listings
 - [x] Add concierge pricing actions for PET-MRI and Lu-177 PSMA therapy
 - [x] Verify updated pricing disclosures, navigation, desktop, and mobile behavior
 
