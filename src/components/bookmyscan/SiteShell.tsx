@@ -190,8 +190,8 @@ function FooterLinks({ title, links }: { title: string; links: readonly (readonl
   return (
     <div>
       <h3 className="footer-title">{title}</h3>
-      <div className="grid gap-2">
-        {links.map(([label, to]) => <Link key={to} to={to} className="text-sm text-primary-foreground/75 hover:text-primary-foreground">{label}</Link>)}
+      <div className="footer-links">
+        {links.map(([label, to]) => <Link key={to} to={to}>{label}</Link>)}
       </div>
     </div>
   );
