@@ -12,7 +12,7 @@ import { categories } from "@/lib/catalog";
 
 const nav = [
   ["Advanced Cancer Imaging", "/advanced-cancer-imaging"],
-  ["Lu‑177 PSMA Therapy", "/lu-177-psma-therapy"],
+  ["Nuclear Medicine Therapies", "/nuclear-medicine-therapies"],
   ["Scan Cost Guide", "/scan-cost"],
 ] as const;
 
@@ -160,7 +160,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
           <FooterLinks title="Popular scans" links={popularScans} />
           <FooterLinks title="Scan centres" links={cityLinks} />
           <FooterLinks title="Popular localities" links={localityLinks} />
-          <FooterLinks title="Patient resources" links={[["All Scan Tests", "/scan-tests"], ["Compare Scans", "/compare-scans"], ["Scan Cost Guide", "/scan-cost"], ["Preparation Guides", "/preparation-guides"], ["Advanced Cancer Imaging", "/advanced-cancer-imaging"]]} />
+          <FooterLinks title="Patient resources" links={[["All Scan Tests", "/scan-tests"], ["Compare Scans", "/compare-scans"], ["Scan Cost Guide", "/scan-cost"], ["Preparation Guides", "/preparation-guides"], ["Advanced Cancer Imaging", "/advanced-cancer-imaging"], ["Nuclear Medicine Therapies", "/nuclear-medicine-therapies"]]} />
           <div>
             <h3 className="footer-title">Patient safety</h3>
             <p className="footer-safety-copy">SavoScan.com is a booking facilitator, not a medical provider. It does not diagnose, recommend tests or make treatment decisions.</p>
