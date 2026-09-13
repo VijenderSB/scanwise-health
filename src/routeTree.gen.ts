@@ -22,6 +22,7 @@ import { Route as CookiePolicyRouteImport } from './routes/cookie-policy'
 import { Route as DisclaimerRouteImport } from './routes/disclaimer'
 import { Route as GrievanceRouteImport } from './routes/grievance'
 import { Route as Lu177PsmaTherapyRouteImport } from './routes/lu-177-psma-therapy'
+import { Route as NuclearMedicineTherapiesRouteImport } from './routes/nuclear-medicine-therapies'
 import { Route as PreparationGuidesRouteImport } from './routes/preparation-guides'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as RefundCancellationRouteImport } from './routes/refund-cancellation'
@@ -32,6 +33,8 @@ import { Route as TermsRouteImport } from './routes/terms'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
 import { Route as ConditionsSlugRouteImport } from './routes/conditions.$slug'
 import { Route as GuidesSlugRouteImport } from './routes/guides.$slug'
+import { Route as NuclearMedicineTherapiesIndexRouteImport } from './routes/nuclear-medicine-therapies.index'
+import { Route as NuclearMedicineTherapiesTherapyRouteImport } from './routes/nuclear-medicine-therapies.$therapy'
 import { Route as ScanCentresIndexRouteImport } from './routes/scan-centres.index'
 import { Route as ScanCentresCityRouteImport } from './routes/scan-centres.$city'
 import { Route as ScanTestsIndexRouteImport } from './routes/scan-tests.index'
@@ -106,6 +109,12 @@ const Lu177PsmaTherapyRoute = Lu177PsmaTherapyRouteImport.update({
   path: '/lu-177-psma-therapy',
   getParentRoute: () => rootRouteImport,
 } as any)
+const NuclearMedicineTherapiesRoute =
+  NuclearMedicineTherapiesRouteImport.update({
+    id: '/nuclear-medicine-therapies',
+    path: '/nuclear-medicine-therapies',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const PreparationGuidesRoute = PreparationGuidesRouteImport.update({
   id: '/preparation-guides',
   path: '/preparation-guides',
@@ -156,6 +165,18 @@ const GuidesSlugRoute = GuidesSlugRouteImport.update({
   path: '/guides/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const NuclearMedicineTherapiesIndexRoute =
+  NuclearMedicineTherapiesIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => NuclearMedicineTherapiesRoute,
+  } as any)
+const NuclearMedicineTherapiesTherapyRoute =
+  NuclearMedicineTherapiesTherapyRouteImport.update({
+    id: '/$therapy',
+    path: '/$therapy',
+    getParentRoute: () => NuclearMedicineTherapiesRoute,
+  } as any)
 const ScanCentresIndexRoute = ScanCentresIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -216,6 +237,7 @@ export interface FileRoutesByFullPath {
   '/disclaimer': typeof DisclaimerRoute
   '/grievance': typeof GrievanceRoute
   '/lu-177-psma-therapy': typeof Lu177PsmaTherapyRoute
+  '/nuclear-medicine-therapies': typeof NuclearMedicineTherapiesRouteWithChildren
   '/preparation-guides': typeof PreparationGuidesRoute
   '/privacy': typeof PrivacyRoute
   '/refund-cancellation': typeof RefundCancellationRoute
@@ -226,8 +248,10 @@ export interface FileRoutesByFullPath {
   '/admin': typeof AuthenticatedAdminRoute
   '/conditions/$slug': typeof ConditionsSlugRoute
   '/guides/$slug': typeof GuidesSlugRoute
+  '/nuclear-medicine-therapies/$therapy': typeof NuclearMedicineTherapiesTherapyRoute
   '/scan-centres/$city': typeof ScanCentresCityRouteWithChildren
   '/scan-tests/$modality': typeof ScanTestsModalityRouteWithChildren
+  '/nuclear-medicine-therapies/': typeof NuclearMedicineTherapiesIndexRoute
   '/scan-centres/': typeof ScanCentresIndexRoute
   '/scan-tests/': typeof ScanTestsIndexRoute
   '/scan-centres/$city/$slug': typeof ScanCentresCitySlugRoute
@@ -257,6 +281,8 @@ export interface FileRoutesByTo {
   '/admin': typeof AuthenticatedAdminRoute
   '/conditions/$slug': typeof ConditionsSlugRoute
   '/guides/$slug': typeof GuidesSlugRoute
+  '/nuclear-medicine-therapies/$therapy': typeof NuclearMedicineTherapiesTherapyRoute
+  '/nuclear-medicine-therapies': typeof NuclearMedicineTherapiesIndexRoute
   '/scan-centres': typeof ScanCentresIndexRoute
   '/scan-tests': typeof ScanTestsIndexRoute
   '/scan-centres/$city/$slug': typeof ScanCentresCitySlugRoute
@@ -280,6 +306,7 @@ export interface FileRoutesById {
   '/disclaimer': typeof DisclaimerRoute
   '/grievance': typeof GrievanceRoute
   '/lu-177-psma-therapy': typeof Lu177PsmaTherapyRoute
+  '/nuclear-medicine-therapies': typeof NuclearMedicineTherapiesRouteWithChildren
   '/preparation-guides': typeof PreparationGuidesRoute
   '/privacy': typeof PrivacyRoute
   '/refund-cancellation': typeof RefundCancellationRoute
@@ -290,8 +317,10 @@ export interface FileRoutesById {
   '/_authenticated/admin': typeof AuthenticatedAdminRoute
   '/conditions/$slug': typeof ConditionsSlugRoute
   '/guides/$slug': typeof GuidesSlugRoute
+  '/nuclear-medicine-therapies/$therapy': typeof NuclearMedicineTherapiesTherapyRoute
   '/scan-centres/$city': typeof ScanCentresCityRouteWithChildren
   '/scan-tests/$modality': typeof ScanTestsModalityRouteWithChildren
+  '/nuclear-medicine-therapies/': typeof NuclearMedicineTherapiesIndexRoute
   '/scan-centres/': typeof ScanCentresIndexRoute
   '/scan-tests/': typeof ScanTestsIndexRoute
   '/scan-centres/$city/$slug': typeof ScanCentresCitySlugRoute
@@ -315,6 +344,7 @@ export interface FileRouteTypes {
     | '/disclaimer'
     | '/grievance'
     | '/lu-177-psma-therapy'
+    | '/nuclear-medicine-therapies'
     | '/preparation-guides'
     | '/privacy'
     | '/refund-cancellation'
@@ -325,8 +355,10 @@ export interface FileRouteTypes {
     | '/admin'
     | '/conditions/$slug'
     | '/guides/$slug'
+    | '/nuclear-medicine-therapies/$therapy'
     | '/scan-centres/$city'
     | '/scan-tests/$modality'
+    | '/nuclear-medicine-therapies/'
     | '/scan-centres/'
     | '/scan-tests/'
     | '/scan-centres/$city/$slug'
@@ -356,6 +388,8 @@ export interface FileRouteTypes {
     | '/admin'
     | '/conditions/$slug'
     | '/guides/$slug'
+    | '/nuclear-medicine-therapies/$therapy'
+    | '/nuclear-medicine-therapies'
     | '/scan-centres'
     | '/scan-tests'
     | '/scan-centres/$city/$slug'
@@ -378,6 +412,7 @@ export interface FileRouteTypes {
     | '/disclaimer'
     | '/grievance'
     | '/lu-177-psma-therapy'
+    | '/nuclear-medicine-therapies'
     | '/preparation-guides'
     | '/privacy'
     | '/refund-cancellation'
@@ -388,8 +423,10 @@ export interface FileRouteTypes {
     | '/_authenticated/admin'
     | '/conditions/$slug'
     | '/guides/$slug'
+    | '/nuclear-medicine-therapies/$therapy'
     | '/scan-centres/$city'
     | '/scan-tests/$modality'
+    | '/nuclear-medicine-therapies/'
     | '/scan-centres/'
     | '/scan-tests/'
     | '/scan-centres/$city/$slug'
@@ -413,6 +450,7 @@ export interface RootRouteChildren {
   DisclaimerRoute: typeof DisclaimerRoute
   GrievanceRoute: typeof GrievanceRoute
   Lu177PsmaTherapyRoute: typeof Lu177PsmaTherapyRoute
+  NuclearMedicineTherapiesRoute: typeof NuclearMedicineTherapiesRouteWithChildren
   PreparationGuidesRoute: typeof PreparationGuidesRoute
   PrivacyRoute: typeof PrivacyRoute
   RefundCancellationRoute: typeof RefundCancellationRoute
@@ -516,6 +554,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Lu177PsmaTherapyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/nuclear-medicine-therapies': {
+      id: '/nuclear-medicine-therapies'
+      path: '/nuclear-medicine-therapies'
+      fullPath: '/nuclear-medicine-therapies'
+      preLoaderRoute: typeof NuclearMedicineTherapiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/preparation-guides': {
       id: '/preparation-guides'
       path: '/preparation-guides'
@@ -585,6 +630,20 @@ declare module '@tanstack/react-router' {
       fullPath: '/guides/$slug'
       preLoaderRoute: typeof GuidesSlugRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/nuclear-medicine-therapies/': {
+      id: '/nuclear-medicine-therapies/'
+      path: '/'
+      fullPath: '/nuclear-medicine-therapies/'
+      preLoaderRoute: typeof NuclearMedicineTherapiesIndexRouteImport
+      parentRoute: typeof NuclearMedicineTherapiesRoute
+    }
+    '/nuclear-medicine-therapies/$therapy': {
+      id: '/nuclear-medicine-therapies/$therapy'
+      path: '/$therapy'
+      fullPath: '/nuclear-medicine-therapies/$therapy'
+      preLoaderRoute: typeof NuclearMedicineTherapiesTherapyRouteImport
+      parentRoute: typeof NuclearMedicineTherapiesRoute
     }
     '/scan-centres/': {
       id: '/scan-centres/'
@@ -675,6 +734,22 @@ const ConditionsRouteWithChildren = ConditionsRoute._addFileChildren(
   ConditionsRouteChildren,
 )
 
+interface NuclearMedicineTherapiesRouteChildren {
+  NuclearMedicineTherapiesTherapyRoute: typeof NuclearMedicineTherapiesTherapyRoute
+  NuclearMedicineTherapiesIndexRoute: typeof NuclearMedicineTherapiesIndexRoute
+}
+
+const NuclearMedicineTherapiesRouteChildren: NuclearMedicineTherapiesRouteChildren =
+  {
+    NuclearMedicineTherapiesTherapyRoute: NuclearMedicineTherapiesTherapyRoute,
+    NuclearMedicineTherapiesIndexRoute: NuclearMedicineTherapiesIndexRoute,
+  }
+
+const NuclearMedicineTherapiesRouteWithChildren =
+  NuclearMedicineTherapiesRoute._addFileChildren(
+    NuclearMedicineTherapiesRouteChildren,
+  )
+
 interface ScanCentresCityRouteChildren {
   ScanCentresCitySlugRoute: typeof ScanCentresCitySlugRoute
   ScanCentresCityIndexRoute: typeof ScanCentresCityIndexRoute
@@ -746,6 +821,7 @@ const rootRouteChildren: RootRouteChildren = {
   DisclaimerRoute: DisclaimerRoute,
   GrievanceRoute: GrievanceRoute,
   Lu177PsmaTherapyRoute: Lu177PsmaTherapyRoute,
+  NuclearMedicineTherapiesRoute: NuclearMedicineTherapiesRouteWithChildren,
   PreparationGuidesRoute: PreparationGuidesRoute,
   PrivacyRoute: PrivacyRoute,
   RefundCancellationRoute: RefundCancellationRoute,
