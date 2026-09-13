@@ -214,30 +214,32 @@ header.sticky{box-shadow:0 1px 0 color-mix(in oklch,var(--primary) 7%,transparen
 @media(max-width:760px){.footer-legal>div{display:grid;gap:.8rem}.location-summary{display:block}.location-summary>svg{display:none}.location-assist{grid-template-columns:1fr}.location-assist>a{width:100%}}
 @media(max-width:470px){.footer-grid{grid-template-columns:1fr}}
 
-/* Image-led diagnostic cards and clinical interaction effects */
-.popular-offer-card{overflow:hidden;padding:0;transition:transform .35s ease,border-color .35s ease,box-shadow .35s ease}
-.scan-card-media,.category-card-media{position:relative;overflow:hidden;background:var(--clinical-panel)}
-.scan-card-media{aspect-ratio:3/2}
-.scan-card-media img,.category-card-media img{width:100%;height:100%;object-fit:cover;filter:saturate(.78) contrast(1.02);transition:transform .65s ease,filter .4s ease}
-.scan-card-media:after,.category-card-media:after{content:"";position:absolute;inset:0;background:linear-gradient(to top,color-mix(in oklch,var(--clinical-ink) 60%,transparent),transparent 58%);pointer-events:none}
-.scan-card-media>span{position:absolute;z-index:2;left:1rem;bottom:.8rem;border-left:2px solid var(--clinical-glow);background:color-mix(in oklch,var(--clinical-ink) 78%,transparent);padding:.4rem .55rem;color:var(--primary-foreground);font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;backdrop-filter:blur(6px)}
-.scan-card-media>i,.category-card-media>i{position:absolute;z-index:3;left:0;right:0;top:-2px;height:2px;background:var(--clinical-glow);box-shadow:0 0 12px var(--clinical-glow);opacity:0;transition:top .75s ease,opacity .25s ease}
-.scan-card-body{display:flex;flex:1;flex-direction:column;gap:.9rem;padding:1.25rem}
+/* Compact diagnostic thumbnails and clinical interaction effects */
+.popular-offer-card{position:relative;overflow:hidden;padding:1.25rem;transition:transform .35s ease,border-color .35s ease,box-shadow .35s ease}
+.scan-card-media,.category-card-media{position:absolute;z-index:1;top:1rem;right:1rem;width:5.25rem;height:4.25rem;overflow:hidden;border:1px solid var(--clinical-line);background:var(--clinical-panel);box-shadow:0 7px 18px color-mix(in oklch,var(--clinical-ink) 10%,transparent)}
+.scan-card-media img,.category-card-media img{width:100%;height:100%;object-fit:cover;filter:saturate(.8) contrast(1.03);transition:transform .55s ease,filter .35s ease}
+.scan-thumb-1 .scan-card-media img,.scan-thumb-1 .category-card-media img{object-position:50% 50%}
+.scan-thumb-2 .scan-card-media img,.scan-thumb-2 .category-card-media img{object-position:30% 50%}
+.scan-thumb-3 .scan-card-media img,.scan-thumb-3 .category-card-media img{object-position:72% 50%}
+.scan-card-media:after,.category-card-media:after{content:"";position:absolute;inset:0;background:linear-gradient(to top,color-mix(in oklch,var(--clinical-ink) 28%,transparent),transparent 65%);pointer-events:none}
+.scan-card-media>span{position:absolute;z-index:2;right:.25rem;bottom:.22rem;left:.25rem;overflow:hidden;color:var(--primary-foreground);font-size:.46rem;font-weight:800;text-align:right;text-overflow:ellipsis;text-transform:uppercase;white-space:nowrap}
+.scan-card-media>i,.category-card-media>i{position:absolute;z-index:3;left:0;right:0;top:-2px;height:2px;background:var(--clinical-glow);box-shadow:0 0 10px var(--clinical-glow);opacity:0;transition:top .65s ease,opacity .25s ease}
+.scan-card-body{display:flex;flex:1;flex-direction:column;gap:.9rem;padding:0}
+.popular-offer-card .scan-card-body>div:first-child{min-height:4.25rem;padding-right:6rem}
 .popular-offer-card:hover,.popular-offer-card:focus-within{transform:translateY(-5px);border-color:var(--accent);box-shadow:0 18px 42px color-mix(in oklch,var(--clinical-ink) 13%,transparent)}
-.popular-offer-card:hover .scan-card-media img,.popular-offer-card:focus-within .scan-card-media img,.category-card:hover .category-card-media img,.category-card:focus-visible .category-card-media img{transform:scale(1.055);filter:saturate(.94) contrast(1.04)}
+.popular-offer-card:hover .scan-card-media img,.popular-offer-card:focus-within .scan-card-media img,.category-card:hover .category-card-media img,.category-card:focus-visible .category-card-media img{transform:scale(1.08);filter:saturate(.96) contrast(1.05)}
 .popular-offer-card:hover .scan-card-media>i,.popular-offer-card:focus-within .scan-card-media>i,.category-card:hover .category-card-media>i,.category-card:focus-visible .category-card-media>i{top:100%;opacity:.72}
 .popular-offer-card:hover h3,.popular-offer-card:focus-within h3{color:var(--accent-foreground)}
 .popular-offer-card a svg{transition:transform .25s ease}.popular-offer-card:hover a svg,.popular-offer-card:focus-within a svg{transform:translateX(4px)}
-.category-card{overflow:hidden;padding:0;min-height:360px;transition:transform .35s ease,border-color .35s ease,box-shadow .35s ease}
-.category-card:before{display:none}
-.category-card-media{aspect-ratio:16/10}
-.category-card-media>span{position:absolute;z-index:2;right:.8rem;top:.8rem;border:1px solid color-mix(in oklch,var(--primary-foreground) 35%,transparent);background:color-mix(in oklch,var(--clinical-ink) 75%,transparent);padding:.3rem .45rem;color:var(--primary-foreground);font-family:var(--font-display);font-size:.65rem;font-weight:800;backdrop-filter:blur(6px)}
-.category-card-body{padding:1.15rem}.category-card-body>svg{width:1.25rem;height:1.25rem;margin-bottom:.8rem;color:var(--accent-foreground)}
-.category-card-body p{min-height:4rem}.category-card-body strong svg{transition:transform .25s ease}.category-card:hover .category-card-body strong svg,.category-card:focus-visible .category-card-body strong svg{transform:translateX(4px)}
+.category-card{position:relative;overflow:hidden;min-height:250px;padding:1.15rem;transition:transform .35s ease,border-color .35s ease,box-shadow .35s ease}
+.category-card:before{display:block}
+.category-card-media>span{position:absolute;z-index:2;right:.3rem;top:.25rem;color:var(--primary-foreground);font-family:var(--font-display);font-size:.55rem;font-weight:800;text-shadow:0 1px 5px var(--clinical-ink)}
+.category-card-body{padding:0}.category-card-body>svg{width:1.25rem;height:1.25rem;margin-bottom:.8rem;color:var(--accent-foreground)}
+.category-card-body h3,.category-card-body p{padding-right:6rem}.category-card-body p{min-height:4rem}.category-card-body strong svg{transition:transform .25s ease}.category-card:hover .category-card-body strong svg,.category-card:focus-visible .category-card-body strong svg{transform:translateX(4px)}
 .category-card:hover,.category-card:focus-visible{transform:translateY(-5px);border-color:var(--accent);box-shadow:0 18px 42px color-mix(in oklch,var(--clinical-ink) 13%,transparent)}
 .steps>div,.centre-card,.faq-grid article,.info-box,.deal-card,.search-console,.location-assist,.locality-directory,.safety-panel{transition:transform .3s ease,border-color .3s ease,box-shadow .3s ease,background-color .3s ease}
 .steps>div:hover,.centre-card:hover,.faq-grid article:hover,.info-box:hover,.deal-card:hover,.location-assist:hover,.locality-directory:hover,.safety-panel:hover{transform:translateY(-3px);border-color:var(--accent);box-shadow:0 13px 30px color-mix(in oklch,var(--clinical-ink) 10%,transparent)}
 .imaging-photo img{transition:transform .65s ease,filter .4s ease}.imaging-photo:hover img{transform:scale(1.035);filter:saturate(.86)}
 .link-list a{transition:color .25s ease,padding-left .25s ease}.link-list a:hover{padding-left:.4rem;color:var(--accent-foreground)}
-@media(max-width:760px){.scan-card-media{aspect-ratio:16/9}.category-card{min-height:0}.category-card-body p{min-height:0}}
+@media(max-width:760px){.category-card{min-height:225px}.category-card-body p{min-height:0}.scan-card-media,.category-card-media{width:4.75rem;height:3.8rem}.popular-offer-card .scan-card-body>div:first-child,.category-card-body h3,.category-card-body p{padding-right:5.4rem}}
 @media(prefers-reduced-motion:reduce){.popular-offer-card,.scan-card-media img,.category-card,.category-card-media img,.scan-card-media>i,.category-card-media>i,.popular-offer-card a svg,.category-card-body strong svg,.steps>div,.centre-card,.faq-grid article,.info-box,.deal-card,.location-assist,.locality-directory,.safety-panel,.imaging-photo img,.link-list a{transition:none}.popular-offer-card:hover,.popular-offer-card:focus-within,.category-card:hover,.category-card:focus-visible,.steps>div:hover,.centre-card:hover,.faq-grid article:hover,.info-box:hover,.deal-card:hover,.location-assist:hover,.locality-directory:hover,.safety-panel:hover{transform:none}.popular-offer-card:hover .scan-card-media img,.category-card:hover .category-card-media img,.imaging-photo:hover img{transform:none}.scan-card-media>i,.category-card-media>i{display:none}}
