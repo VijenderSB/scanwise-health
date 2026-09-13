@@ -1,13 +1,10 @@
 import {createServerFn} from "@tanstack/react-start";
-import {createClient} from "@supabase/supabase-js";
-import type {Database} from "@/integrations/supabase/types";
-
 export const getPublishedTherapySlugs=createServerFn({method:"GET"}).handler(async()=>{
  const url=process.env['SUPABASE_URL'];
  const key=process.env['SUPABASE_ANON_KEY']??process.env['SUPABASE_PUBLISHABLE_KEY'];
  if(!url||!key)return [] as string[];
- const client=createClient<Database>(url,key,{auth:{persistSession:false,autoRefreshToken:false,detectSessionInUrl:false}});
- const {data,error}=await client.from('nuclear_medicine_therapies').select('slug').eq('published',true).not('clinical_reviewer','is',null).not('clinical_reviewed_at','is',null).order('display_order');
- if(error)throw new Error('Therapy publication status is temporarily unavailable.');
- return (data??[]).map(item=>item.slug);
+ const response=await fetch(`${url}/rest/v1/nuclear_medicine_therapies?select=slug&published=eq.true&clinical_reviewer=not.is.null&clinical_reviewed_at=not.is.null&order=display_order.asc`,{headers:{apikey:key}});
+ if(!response.ok)return [] as string[];
+ const data=await response.json() as {slug:string}[];
+ return data.map(item=>item.slug);
 });
