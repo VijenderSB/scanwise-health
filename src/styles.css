@@ -183,3 +183,33 @@ header.sticky{box-shadow:0 1px 0 color-mix(in oklch,var(--primary) 7%,transparen
 @media(max-width:900px){.hero-imaging-label{display:none}.hero-copy{max-width:680px}.header-assist>span{display:none}.scan-request-timer-inner{grid-template-columns:1fr}.timer-action{min-width:0;justify-self:start;width:min(100%,360px)}}
 @media(max-width:760px){.clinical-topbar-inner{justify-content:center}.clinical-topbar-inner>span:last-child{display:none}.home-hero,.hero-content{min-height:650px}.home-hero>img{object-position:62% center}.hero-scrim{background:linear-gradient(90deg,oklch(.16 .045 240/.97),oklch(.19 .05 240/.79))}.hero-content{padding-block:4rem}.hero-content h1{font-size:clamp(2.7rem,13vw,4rem)}.hero-trust{display:grid;gap:.6rem}.scan-request-timer{padding-block:1rem}.scan-request-timer-inner{width:100%;border-inline:0;padding:1.5rem 1rem;gap:1.5rem}.timer-action{width:100%}.timer-digits>div{min-width:0;flex:1}.search-console-head{align-items:flex-start}.search-console-head>div{display:grid;gap:.35rem}.console-status{border:0;padding:0}.search-console-head>p{display:none}.section-head:before{left:-.65rem}.faq-grid article{padding:1.2rem}.imaging-feature{padding-block:0}}
 @media(prefers-reduced-motion:reduce){.category-card{transition:none}.category-card:hover{transform:none}}
+
+/* Local discovery and legal information */
+.footer-grid{grid-template-columns:1.35fr repeat(5,1fr);gap:2rem}
+.footer-legal{border-top:1px solid color-mix(in oklch,var(--primary-foreground) 15%,transparent);padding-block:1.3rem}
+.footer-legal>div{display:flex;align-items:center;gap:1.5rem}
+.footer-legal .footer-title{margin:0;white-space:nowrap}
+.footer-legal .footer-links{display:flex;flex-wrap:wrap;gap:.55rem 1.2rem}
+.legal-copy{display:grid;max-width:850px;gap:2rem}
+.legal-copy section{border-top:1px solid var(--border);padding-top:1.5rem}
+.legal-copy section p,.legal-copy section li{margin-top:.65rem;line-height:1.8;color:var(--muted-foreground)}
+.legal-copy section ul{padding-left:1.2rem;list-style:disc}
+.legal-updated{border-top:1px solid var(--border);padding-top:1.25rem;font-size:.75rem;color:var(--muted-foreground)}
+.legal-inline-link{color:var(--primary);text-decoration:underline;text-underline-offset:2px}
+.legal-actions{display:flex;flex-wrap:wrap;gap:.75rem;margin:.9rem 0}
+.locality-directory{margin-bottom:2.5rem;border:1px solid var(--clinical-line);background:var(--card);padding:1.5rem}
+.locality-directory h2{font-size:clamp(1.4rem,2.2vw,2rem)}
+.locality-links{display:flex;flex-wrap:wrap;gap:.65rem;margin-top:1.25rem}
+.locality-links a{border:1px solid var(--border);background:var(--secondary);padding:.65rem .85rem;font-size:.78rem;font-weight:700}
+.locality-links a:hover{border-color:var(--accent);background:var(--card)}
+.location-summary{display:flex;align-items:flex-start;justify-content:space-between;gap:2rem;margin-bottom:1.5rem}
+.location-summary h2{font-size:clamp(1.5rem,2.5vw,2.35rem)}
+.location-summary p:last-child{max-width:720px;margin-top:.8rem;color:var(--muted-foreground);line-height:1.7}
+.location-summary>svg{width:2rem;height:2rem;color:var(--accent-foreground)}
+.location-assist{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:1rem;margin-top:2.5rem;border-left:3px solid var(--accent);background:var(--secondary);padding:1.25rem}
+.location-assist>svg{color:var(--accent-foreground)}
+.location-assist h2{font-size:1.2rem}
+.location-assist p{margin-top:.35rem;font-size:.8rem;color:var(--muted-foreground)}
+@media(max-width:1050px){.footer-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:760px){.footer-legal>div{display:grid;gap:.8rem}.location-summary{display:block}.location-summary>svg{display:none}.location-assist{grid-template-columns:1fr}.location-assist>a{width:100%}}
+@media(max-width:470px){.footer-grid{grid-template-columns:1fr}}
