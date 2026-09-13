@@ -14,7 +14,6 @@ import { getPublishedTherapySlugs } from "@/lib/therapies.functions";
 
 const nav = [
   ["Advanced Cancer Imaging", "/advanced-cancer-imaging"],
-  ["Scan Cost Guide", "/scan-cost"],
 ] as const;
 
 const popularScans = [
@@ -96,11 +95,6 @@ export function SiteShell({ children }: { children: ReactNode }) {
               </Link>
             ))}
           </nav>
-          <div className="hidden lg:block">
-            <div className="header-assist"><span>Need scan assistance?</span><Button asChild size="lg">
-              <Link to="/book-a-scan"><PhoneCall />Check Scan Price</Link>
-            </Button></div>
-          </div>
           <Button
             variant="ghost"
             size="icon"
