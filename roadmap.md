@@ -30,3 +30,8 @@
 - [x] Verify locality routing, legal content, metadata, sitemap, desktop and mobile behavior
 - [x] Add image-led scan and category cards with clinical hover effects
 - [x] Verify imagery, hover behavior, reduced motion, desktop and mobile rendering
+- [ ] Rebuild navigation and landing page as Nuclear Medicine Therapies
+- [ ] Publish nine original therapy pages with SEO, FAQs, related scans, and compliant pricing states
+- [ ] Add therapy CMS schema, centre availability, pricing, and protected management
+- [ ] Add therapy callback form, attribution capture, WhatsApp messages, and mobile sticky actions
+- [ ] Redirect the legacy Lu-177 URL, update internal links, sitemap, and verify all flows
