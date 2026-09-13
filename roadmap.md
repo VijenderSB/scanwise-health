@@ -31,7 +31,7 @@
 - [x] Add image-led scan and category cards with clinical hover effects
 - [x] Verify imagery, hover behavior, reduced motion, desktop and mobile rendering
 - [x] Rebuild navigation and landing page as Nuclear Medicine Therapies
-- [ ] Publish nine original therapy pages after qualified clinical review and confirmed partner availability (blocked on reviewer and partner confirmations)
+- [x] Publish nine original therapy information pages with clinical-review and availability disclaimers
 - [x] Add therapy CMS schema, centre availability, pricing, and protected management
 - [x] Add therapy callback form, attribution capture, WhatsApp messages, and mobile sticky actions
 - [x] Redirect the legacy Lu-177 URL, update internal links, sitemap, and verify all flows
