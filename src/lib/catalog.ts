@@ -1,5 +1,7 @@
 export const cities = ["Delhi", "Gurgaon", "Noida", "Greater Noida", "Faridabad", "Ghaziabad"] as const;
 export const citySlugs: Record<string,string> = {delhi:"Delhi",gurgaon:"Gurgaon",noida:"Noida","greater-noida":"Greater Noida",faridabad:"Faridabad",ghaziabad:"Ghaziabad"};
+export function slugifyLocation(value:string){return value.toLowerCase().trim().replace(/[^a-z0-9]+/g,"-").replace(/(^-|-$)/g,"")}
+export function citySlug(city:string){return slugifyLocation(city)}
 export const finalPriceDisclaimer = "Final price may vary by scan protocol, contrast or tracer requirement, city, centre and appointment availability.";
 export type ScanOffer = {id:string;protocolCode:string;scanName:string;centreName:string;locality:string;inclusions:string[];exclusions:string[];regularPriceInr:number;offerPriceInr:number;mandatoryChargesInr:number;verified:boolean;validFrom:string;validUntil:string;limitedSlots:boolean;distanceKm?:number};
 export const verifiedScanOffers: ScanOffer[] = [];
@@ -101,6 +103,33 @@ export const centres = [
  {"name":"Noida MRI & Diagnostic Centre","slug":"noida-mri-diagnostic-centre-noida-sector-39","city":"Noida","locality":"Noida Sector 39","address":"Shop No. 1 39 B Block Road, Sector 39, Noida","tech":["MRI","CT"],"services":["MRI","CT"],"turnaround":"Confirm with centre","cashless":false,"open":false},
  {"name":"VR Diagnostics Centre for Advanced Clinical Imaging","slug":"vr-diagnostics-centre-for-advanced-clinical-imaging-noida","city":"Noida","locality":"Noida","address":"HA-111, Noida","tech":["MRI","CT"],"services":["MRI","CT"],"turnaround":"Confirm with centre","cashless":false,"open":false},
 ] as const;
+export type PriorityLocality={city:string;citySlug:string;name:string;slug:string;matches:readonly string[];summary:string;indexable:boolean};
+export const priorityLocalities:readonly PriorityLocality[]=[
+ {city:"Delhi",citySlug:"delhi",name:"Dwarka",slug:"dwarka",matches:["Dwarka"],summary:"Compare supplied MRI, CT and PET-CT centre listings around Dwarka in South West Delhi.",indexable:true},
+ {city:"Delhi",citySlug:"delhi",name:"Rohini",slug:"rohini",matches:["Rohini"],summary:"Review supplied imaging-centre listings around Rohini in North West Delhi.",indexable:true},
+ {city:"Delhi",citySlug:"delhi",name:"Paschim Vihar",slug:"paschim-vihar",matches:["Paschim Vihar"],summary:"Explore supplied MRI, CT and PET-CT listings around Paschim Vihar in West Delhi.",indexable:true},
+ {city:"Delhi",citySlug:"delhi",name:"Green Park",slug:"green-park",matches:["Green Park","Green Park Extension"],summary:"Compare supplied radiology listings around Green Park and Green Park Extension in South Delhi.",indexable:true},
+ {city:"Delhi",citySlug:"delhi",name:"Hauz Khas",slug:"hauz-khas",matches:["Hauz Khas"],summary:"Find supplied scan-centre information around Hauz Khas in South Delhi.",indexable:true},
+ {city:"Delhi",citySlug:"delhi",name:"Karol Bagh",slug:"karol-bagh",matches:["Karol Bagh"],summary:"Review supplied diagnostic imaging information around Karol Bagh and Pusa Road in Central Delhi.",indexable:true},
+ {city:"Delhi",citySlug:"delhi",name:"Defence Colony",slug:"defence-colony",matches:["Defence Colony"],summary:"Explore supplied MRI, CT and PET-CT centre information around Defence Colony in South Delhi.",indexable:true},
+ {city:"Delhi",citySlug:"delhi",name:"Greater Kailash",slug:"greater-kailash",matches:["Greater Kailash"],summary:"Review supplied specialist imaging information around Greater Kailash in South Delhi.",indexable:true},
+ {city:"Noida",citySlug:"noida",name:"Sector 39",slug:"sector-39",matches:["Noida Sector 39"],summary:"Compare supplied MRI and CT centre listings around Sector 39, Noida.",indexable:true},
+ {city:"Gurgaon",citySlug:"gurgaon",name:"Sector 14",slug:"sector-14",matches:["Sector 14"],summary:"Review supplied MRI, CT and PET-CT centre information around Sector 14, Gurugram.",indexable:true},
+ {city:"Gurgaon",citySlug:"gurgaon",name:"Sector 15",slug:"sector-15",matches:["Sector 15"],summary:"Explore supplied MRI and PET-CT centre information around Sector 15, Gurugram.",indexable:true},
+ {city:"Gurgaon",citySlug:"gurgaon",name:"Sector 55",slug:"sector-55",matches:["Sector 55"],summary:"Review supplied MRI, CT and PET-CT centre information around Sector 55, Gurugram.",indexable:true},
+ {city:"Gurgaon",citySlug:"gurgaon",name:"Sushant Lok",slug:"sushant-lok",matches:["Sushant Lok"],summary:"Compare supplied radiology-centre information around Sushant Lok, Gurugram.",indexable:true},
+ {city:"Gurgaon",citySlug:"gurgaon",name:"Sohna Road",slug:"sohna-road",matches:["Sohna Road","Badshahpur Sohna Road"],summary:"Explore supplied MRI, CT and PET imaging listings along Sohna Road, Gurugram.",indexable:true},
+ {city:"Gurgaon",citySlug:"gurgaon",name:"Golf Course Road",slug:"golf-course-road",matches:["Golf Course Road"],summary:"Review supplied MRI-centre information around Golf Course Road, Gurugram.",indexable:true},
+ {city:"Ghaziabad",citySlug:"ghaziabad",name:"Indirapuram",slug:"indirapuram",matches:["Indirapuram","Niti Khand II Indirapuram"],summary:"Compare supplied MRI, CT and PET-CT centre listings around Indirapuram, Ghaziabad.",indexable:true},
+ {city:"Ghaziabad",citySlug:"ghaziabad",name:"Vasundhara",slug:"vasundhara",matches:["Vasundhara"],summary:"Review supplied MRI, CT and PET-CT centre information around Vasundhara, Ghaziabad.",indexable:true},
+ {city:"Ghaziabad",citySlug:"ghaziabad",name:"Sanjay Nagar",slug:"sanjay-nagar",matches:["Sanjay Nagar"],summary:"Explore supplied radiology-centre information around Sanjay Nagar, Ghaziabad.",indexable:true},
+ {city:"Faridabad",citySlug:"faridabad",name:"Sector 16",slug:"sector-16",matches:["Sector 16"],summary:"Review supplied MRI and CT centre information around Sector 16, Faridabad.",indexable:true},
+ {city:"Faridabad",citySlug:"faridabad",name:"BK Chowk",slug:"bk-chowk",matches:["BK Chowk"],summary:"Compare supplied MRI and CT centre listings around BK Chowk, Faridabad.",indexable:true},
+ {city:"Faridabad",citySlug:"faridabad",name:"Railway Road",slug:"railway-road",matches:["Railway Road"],summary:"Explore supplied MRI and CT centre information around Railway Road, Faridabad.",indexable:true},
+] as const;
+export function getPriorityLocalities(city:string){return priorityLocalities.filter(area=>area.city===city)}
+export function getPriorityLocality(citySlugValue:string,localitySlug:string){return priorityLocalities.find(area=>area.citySlug===citySlugValue&&area.slug===localitySlug)}
+export function getCentresForLocality(area:PriorityLocality){return centres.filter(centre=>centre.city===area.city&&area.matches.includes(centre.locality))}
 export const guides = [
  {title:"MRI versus CT Scan",slug:"mri-versus-ct-scan",type:"comparison"},{title:"PET-CT versus PET-MRI",slug:"pet-ct-versus-pet-mri",type:"comparison"},{title:"1.5T MRI versus 3T MRI",slug:"1-5t-mri-versus-3t-mri",type:"comparison"},{title:"PET-CT Cost in Delhi NCR",slug:"pet-ct-cost-delhi-ncr",type:"cost"},{title:"MRI Scan Cost in Delhi",slug:"mri-scan-cost-delhi",type:"cost"},{title:"CT Scan Cost in Delhi NCR",slug:"ct-scan-cost-delhi-ncr",type:"cost"},{title:"How to Prepare for MRI",slug:"how-to-prepare-for-mri",type:"preparation"},{title:"PET-CT Fasting Instructions",slug:"pet-ct-fasting-instructions",type:"preparation"},{title:"Radiation Safety in CT, PET-CT and X-Ray",slug:"radiation-safety-ct-pet-ct-x-ray",type:"safety"},
 ] as const;

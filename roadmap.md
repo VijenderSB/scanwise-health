@@ -25,3 +25,6 @@
 - [x] Complete route metadata, structured data, Delhi NCR discovery signals, and footer improvements
 - [x] Refresh the shared shell and homepage with a premium radiology imaging-centre visual system
 - [x] Verify the visual refresh across desktop and mobile without disrupting conversion flows
+- [x] Add priority Delhi NCR micro-location pages and discovery links
+- [x] Complete public legal pages and booking consent links
+- [x] Verify locality routing, legal content, metadata, sitemap, desktop and mobile behavior

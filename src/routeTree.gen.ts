@@ -17,12 +17,18 @@ import { Route as BookAScanRouteImport } from './routes/book-a-scan'
 import { Route as BookingConfirmationRouteImport } from './routes/booking-confirmation'
 import { Route as CompareScansRouteImport } from './routes/compare-scans'
 import { Route as ConditionsRouteImport } from './routes/conditions'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CookiePolicyRouteImport } from './routes/cookie-policy'
+import { Route as DisclaimerRouteImport } from './routes/disclaimer'
+import { Route as GrievanceRouteImport } from './routes/grievance'
 import { Route as Lu177PsmaTherapyRouteImport } from './routes/lu-177-psma-therapy'
 import { Route as PreparationGuidesRouteImport } from './routes/preparation-guides'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as RefundCancellationRouteImport } from './routes/refund-cancellation'
 import { Route as ScanCentresRouteImport } from './routes/scan-centres'
 import { Route as ScanCostRouteImport } from './routes/scan-cost'
 import { Route as ScanTestsRouteImport } from './routes/scan-tests'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
 import { Route as ConditionsSlugRouteImport } from './routes/conditions.$slug'
 import { Route as GuidesSlugRouteImport } from './routes/guides.$slug'
@@ -34,6 +40,7 @@ import { Route as ScanCentresCityIndexRouteImport } from './routes/scan-centres.
 import { Route as ScanCentresCitySlugRouteImport } from './routes/scan-centres.$city.$slug'
 import { Route as ScanTestsModalityIndexRouteImport } from './routes/scan-tests.$modality.index'
 import { Route as ScanTestsModalityDetailRouteImport } from './routes/scan-tests.$modality.$detail'
+import { Route as ScanCentresCityAreaLocalityRouteImport } from './routes/scan-centres.$city.area.$locality'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -74,6 +81,26 @@ const ConditionsRoute = ConditionsRouteImport.update({
   path: '/conditions',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CookiePolicyRoute = CookiePolicyRouteImport.update({
+  id: '/cookie-policy',
+  path: '/cookie-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DisclaimerRoute = DisclaimerRouteImport.update({
+  id: '/disclaimer',
+  path: '/disclaimer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GrievanceRoute = GrievanceRouteImport.update({
+  id: '/grievance',
+  path: '/grievance',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const Lu177PsmaTherapyRoute = Lu177PsmaTherapyRouteImport.update({
   id: '/lu-177-psma-therapy',
   path: '/lu-177-psma-therapy',
@@ -89,6 +116,11 @@ const PrivacyRoute = PrivacyRouteImport.update({
   path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RefundCancellationRoute = RefundCancellationRouteImport.update({
+  id: '/refund-cancellation',
+  path: '/refund-cancellation',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ScanCentresRoute = ScanCentresRouteImport.update({
   id: '/scan-centres',
   path: '/scan-centres',
@@ -102,6 +134,11 @@ const ScanCostRoute = ScanCostRouteImport.update({
 const ScanTestsRoute = ScanTestsRouteImport.update({
   id: '/scan-tests',
   path: '/scan-tests',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
@@ -159,6 +196,12 @@ const ScanTestsModalityDetailRoute = ScanTestsModalityDetailRouteImport.update({
   path: '/$detail',
   getParentRoute: () => ScanTestsModalityRoute,
 } as any)
+const ScanCentresCityAreaLocalityRoute =
+  ScanCentresCityAreaLocalityRouteImport.update({
+    id: '/area/$locality',
+    path: '/area/$locality',
+    getParentRoute: () => ScanCentresCityRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -168,12 +211,18 @@ export interface FileRoutesByFullPath {
   '/booking-confirmation': typeof BookingConfirmationRoute
   '/compare-scans': typeof CompareScansRoute
   '/conditions': typeof ConditionsRouteWithChildren
+  '/contact': typeof ContactRoute
+  '/cookie-policy': typeof CookiePolicyRoute
+  '/disclaimer': typeof DisclaimerRoute
+  '/grievance': typeof GrievanceRoute
   '/lu-177-psma-therapy': typeof Lu177PsmaTherapyRoute
   '/preparation-guides': typeof PreparationGuidesRoute
   '/privacy': typeof PrivacyRoute
+  '/refund-cancellation': typeof RefundCancellationRoute
   '/scan-centres': typeof ScanCentresRouteWithChildren
   '/scan-cost': typeof ScanCostRoute
   '/scan-tests': typeof ScanTestsRouteWithChildren
+  '/terms': typeof TermsRoute
   '/admin': typeof AuthenticatedAdminRoute
   '/conditions/$slug': typeof ConditionsSlugRoute
   '/guides/$slug': typeof GuidesSlugRoute
@@ -185,6 +234,7 @@ export interface FileRoutesByFullPath {
   '/scan-tests/$modality/$detail': typeof ScanTestsModalityDetailRoute
   '/scan-centres/$city/': typeof ScanCentresCityIndexRoute
   '/scan-tests/$modality/': typeof ScanTestsModalityIndexRoute
+  '/scan-centres/$city/area/$locality': typeof ScanCentresCityAreaLocalityRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -194,10 +244,16 @@ export interface FileRoutesByTo {
   '/booking-confirmation': typeof BookingConfirmationRoute
   '/compare-scans': typeof CompareScansRoute
   '/conditions': typeof ConditionsRouteWithChildren
+  '/contact': typeof ContactRoute
+  '/cookie-policy': typeof CookiePolicyRoute
+  '/disclaimer': typeof DisclaimerRoute
+  '/grievance': typeof GrievanceRoute
   '/lu-177-psma-therapy': typeof Lu177PsmaTherapyRoute
   '/preparation-guides': typeof PreparationGuidesRoute
   '/privacy': typeof PrivacyRoute
+  '/refund-cancellation': typeof RefundCancellationRoute
   '/scan-cost': typeof ScanCostRoute
+  '/terms': typeof TermsRoute
   '/admin': typeof AuthenticatedAdminRoute
   '/conditions/$slug': typeof ConditionsSlugRoute
   '/guides/$slug': typeof GuidesSlugRoute
@@ -207,6 +263,7 @@ export interface FileRoutesByTo {
   '/scan-tests/$modality/$detail': typeof ScanTestsModalityDetailRoute
   '/scan-centres/$city': typeof ScanCentresCityIndexRoute
   '/scan-tests/$modality': typeof ScanTestsModalityIndexRoute
+  '/scan-centres/$city/area/$locality': typeof ScanCentresCityAreaLocalityRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -218,12 +275,18 @@ export interface FileRoutesById {
   '/booking-confirmation': typeof BookingConfirmationRoute
   '/compare-scans': typeof CompareScansRoute
   '/conditions': typeof ConditionsRouteWithChildren
+  '/contact': typeof ContactRoute
+  '/cookie-policy': typeof CookiePolicyRoute
+  '/disclaimer': typeof DisclaimerRoute
+  '/grievance': typeof GrievanceRoute
   '/lu-177-psma-therapy': typeof Lu177PsmaTherapyRoute
   '/preparation-guides': typeof PreparationGuidesRoute
   '/privacy': typeof PrivacyRoute
+  '/refund-cancellation': typeof RefundCancellationRoute
   '/scan-centres': typeof ScanCentresRouteWithChildren
   '/scan-cost': typeof ScanCostRoute
   '/scan-tests': typeof ScanTestsRouteWithChildren
+  '/terms': typeof TermsRoute
   '/_authenticated/admin': typeof AuthenticatedAdminRoute
   '/conditions/$slug': typeof ConditionsSlugRoute
   '/guides/$slug': typeof GuidesSlugRoute
@@ -235,6 +298,7 @@ export interface FileRoutesById {
   '/scan-tests/$modality/$detail': typeof ScanTestsModalityDetailRoute
   '/scan-centres/$city/': typeof ScanCentresCityIndexRoute
   '/scan-tests/$modality/': typeof ScanTestsModalityIndexRoute
+  '/scan-centres/$city/area/$locality': typeof ScanCentresCityAreaLocalityRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -246,12 +310,18 @@ export interface FileRouteTypes {
     | '/booking-confirmation'
     | '/compare-scans'
     | '/conditions'
+    | '/contact'
+    | '/cookie-policy'
+    | '/disclaimer'
+    | '/grievance'
     | '/lu-177-psma-therapy'
     | '/preparation-guides'
     | '/privacy'
+    | '/refund-cancellation'
     | '/scan-centres'
     | '/scan-cost'
     | '/scan-tests'
+    | '/terms'
     | '/admin'
     | '/conditions/$slug'
     | '/guides/$slug'
@@ -263,6 +333,7 @@ export interface FileRouteTypes {
     | '/scan-tests/$modality/$detail'
     | '/scan-centres/$city/'
     | '/scan-tests/$modality/'
+    | '/scan-centres/$city/area/$locality'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -272,10 +343,16 @@ export interface FileRouteTypes {
     | '/booking-confirmation'
     | '/compare-scans'
     | '/conditions'
+    | '/contact'
+    | '/cookie-policy'
+    | '/disclaimer'
+    | '/grievance'
     | '/lu-177-psma-therapy'
     | '/preparation-guides'
     | '/privacy'
+    | '/refund-cancellation'
     | '/scan-cost'
+    | '/terms'
     | '/admin'
     | '/conditions/$slug'
     | '/guides/$slug'
@@ -285,6 +362,7 @@ export interface FileRouteTypes {
     | '/scan-tests/$modality/$detail'
     | '/scan-centres/$city'
     | '/scan-tests/$modality'
+    | '/scan-centres/$city/area/$locality'
   id:
     | '__root__'
     | '/'
@@ -295,12 +373,18 @@ export interface FileRouteTypes {
     | '/booking-confirmation'
     | '/compare-scans'
     | '/conditions'
+    | '/contact'
+    | '/cookie-policy'
+    | '/disclaimer'
+    | '/grievance'
     | '/lu-177-psma-therapy'
     | '/preparation-guides'
     | '/privacy'
+    | '/refund-cancellation'
     | '/scan-centres'
     | '/scan-cost'
     | '/scan-tests'
+    | '/terms'
     | '/_authenticated/admin'
     | '/conditions/$slug'
     | '/guides/$slug'
@@ -312,6 +396,7 @@ export interface FileRouteTypes {
     | '/scan-tests/$modality/$detail'
     | '/scan-centres/$city/'
     | '/scan-tests/$modality/'
+    | '/scan-centres/$city/area/$locality'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -323,12 +408,18 @@ export interface RootRouteChildren {
   BookingConfirmationRoute: typeof BookingConfirmationRoute
   CompareScansRoute: typeof CompareScansRoute
   ConditionsRoute: typeof ConditionsRouteWithChildren
+  ContactRoute: typeof ContactRoute
+  CookiePolicyRoute: typeof CookiePolicyRoute
+  DisclaimerRoute: typeof DisclaimerRoute
+  GrievanceRoute: typeof GrievanceRoute
   Lu177PsmaTherapyRoute: typeof Lu177PsmaTherapyRoute
   PreparationGuidesRoute: typeof PreparationGuidesRoute
   PrivacyRoute: typeof PrivacyRoute
+  RefundCancellationRoute: typeof RefundCancellationRoute
   ScanCentresRoute: typeof ScanCentresRouteWithChildren
   ScanCostRoute: typeof ScanCostRoute
   ScanTestsRoute: typeof ScanTestsRouteWithChildren
+  TermsRoute: typeof TermsRoute
   GuidesSlugRoute: typeof GuidesSlugRoute
 }
 
@@ -390,6 +481,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ConditionsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cookie-policy': {
+      id: '/cookie-policy'
+      path: '/cookie-policy'
+      fullPath: '/cookie-policy'
+      preLoaderRoute: typeof CookiePolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/disclaimer': {
+      id: '/disclaimer'
+      path: '/disclaimer'
+      fullPath: '/disclaimer'
+      preLoaderRoute: typeof DisclaimerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/grievance': {
+      id: '/grievance'
+      path: '/grievance'
+      fullPath: '/grievance'
+      preLoaderRoute: typeof GrievanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/lu-177-psma-therapy': {
       id: '/lu-177-psma-therapy'
       path: '/lu-177-psma-therapy'
@@ -411,6 +530,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/refund-cancellation': {
+      id: '/refund-cancellation'
+      path: '/refund-cancellation'
+      fullPath: '/refund-cancellation'
+      preLoaderRoute: typeof RefundCancellationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/scan-centres': {
       id: '/scan-centres'
       path: '/scan-centres'
@@ -430,6 +556,13 @@ declare module '@tanstack/react-router' {
       path: '/scan-tests'
       fullPath: '/scan-tests'
       preLoaderRoute: typeof ScanTestsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_authenticated/admin': {
@@ -509,6 +642,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ScanTestsModalityDetailRouteImport
       parentRoute: typeof ScanTestsModalityRoute
     }
+    '/scan-centres/$city/area/$locality': {
+      id: '/scan-centres/$city/area/$locality'
+      path: '/area/$locality'
+      fullPath: '/scan-centres/$city/area/$locality'
+      preLoaderRoute: typeof ScanCentresCityAreaLocalityRouteImport
+      parentRoute: typeof ScanCentresCityRoute
+    }
   }
 }
 
@@ -538,11 +678,13 @@ const ConditionsRouteWithChildren = ConditionsRoute._addFileChildren(
 interface ScanCentresCityRouteChildren {
   ScanCentresCitySlugRoute: typeof ScanCentresCitySlugRoute
   ScanCentresCityIndexRoute: typeof ScanCentresCityIndexRoute
+  ScanCentresCityAreaLocalityRoute: typeof ScanCentresCityAreaLocalityRoute
 }
 
 const ScanCentresCityRouteChildren: ScanCentresCityRouteChildren = {
   ScanCentresCitySlugRoute: ScanCentresCitySlugRoute,
   ScanCentresCityIndexRoute: ScanCentresCityIndexRoute,
+  ScanCentresCityAreaLocalityRoute: ScanCentresCityAreaLocalityRoute,
 }
 
 const ScanCentresCityRouteWithChildren = ScanCentresCityRoute._addFileChildren(
@@ -599,12 +741,18 @@ const rootRouteChildren: RootRouteChildren = {
   BookingConfirmationRoute: BookingConfirmationRoute,
   CompareScansRoute: CompareScansRoute,
   ConditionsRoute: ConditionsRouteWithChildren,
+  ContactRoute: ContactRoute,
+  CookiePolicyRoute: CookiePolicyRoute,
+  DisclaimerRoute: DisclaimerRoute,
+  GrievanceRoute: GrievanceRoute,
   Lu177PsmaTherapyRoute: Lu177PsmaTherapyRoute,
   PreparationGuidesRoute: PreparationGuidesRoute,
   PrivacyRoute: PrivacyRoute,
+  RefundCancellationRoute: RefundCancellationRoute,
   ScanCentresRoute: ScanCentresRouteWithChildren,
   ScanCostRoute: ScanCostRoute,
   ScanTestsRoute: ScanTestsRouteWithChildren,
+  TermsRoute: TermsRoute,
   GuidesSlugRoute: GuidesSlugRoute,
 }
 export const routeTree = rootRouteImport

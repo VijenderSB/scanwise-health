@@ -27,11 +27,30 @@ const popularScans = [
 
 const cityLinks = [
   ["Delhi", "/scan-centres/delhi"],
-  ["Gurgaon", "/scan-centres/gurgaon"],
+  ["Gurugram (Gurgaon)", "/scan-centres/gurgaon"],
   ["Noida", "/scan-centres/noida"],
   ["Faridabad", "/scan-centres/faridabad"],
   ["Ghaziabad", "/scan-centres/ghaziabad"],
   ["Greater Noida", "/scan-centres/greater-noida"],
+] as const;
+
+const localityLinks = [
+  ["Dwarka, Delhi", "/scan-centres/delhi/area/dwarka"],
+  ["Rohini, Delhi", "/scan-centres/delhi/area/rohini"],
+  ["Sector 39, Noida", "/scan-centres/noida/area/sector-39"],
+  ["Sushant Lok, Gurugram", "/scan-centres/gurgaon/area/sushant-lok"],
+  ["Indirapuram, Ghaziabad", "/scan-centres/ghaziabad/area/indirapuram"],
+  ["BK Chowk, Faridabad", "/scan-centres/faridabad/area/bk-chowk"],
+] as const;
+
+const legalLinks = [
+  ["Privacy Policy", "/privacy"],
+  ["Terms of Use", "/terms"],
+  ["Cancellation & Refund", "/refund-cancellation"],
+  ["Medical Disclaimer", "/disclaimer"],
+  ["Grievance Redressal", "/grievance"],
+  ["Cookie Policy", "/cookie-policy"],
+  ["Contact", "/contact"],
 ] as const;
 
 const whatsappUrl = `https://wa.me/919990519519?text=${encodeURIComponent("Hello SavoScan.com, I need help comparing scan prices and booking a radiology scan.")}`;
@@ -140,7 +159,8 @@ export function SiteShell({ children }: { children: ReactNode }) {
           </div>
           <FooterLinks title="Popular scans" links={popularScans} />
           <FooterLinks title="Scan centres" links={cityLinks} />
-          <FooterLinks title="Patient resources" links={[["All Scan Tests", "/scan-tests"], ["Compare Scans", "/compare-scans"], ["Scan Cost Guide", "/scan-cost"], ["Preparation Guides", "/preparation-guides"], ["Advanced Cancer Imaging", "/advanced-cancer-imaging"], ["Privacy", "/privacy"]]} />
+          <FooterLinks title="Popular localities" links={localityLinks} />
+          <FooterLinks title="Patient resources" links={[["All Scan Tests", "/scan-tests"], ["Compare Scans", "/compare-scans"], ["Scan Cost Guide", "/scan-cost"], ["Preparation Guides", "/preparation-guides"], ["Advanced Cancer Imaging", "/advanced-cancer-imaging"]]} />
           <div>
             <h3 className="footer-title">Patient safety</h3>
             <p className="footer-safety-copy">SavoScan.com is a booking facilitator, not a medical provider. It does not diagnose, recommend tests or make treatment decisions.</p>
@@ -148,6 +168,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
             <div className="footer-trust"><ShieldCheck />Privacy-conscious assistance</div>
           </div>
         </div>
+        <div className="page-wrap footer-legal"><FooterLinks title="Legal & support" links={legalLinks} /></div>
         <div className="footer-bottom">
           <div className="page-wrap footer-bottom-inner">
             <p>© 2026 SavoScan.com. Scan comparison and appointment-assistance platform.</p>
