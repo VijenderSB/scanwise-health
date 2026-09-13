@@ -28,3 +28,5 @@
 - [x] Add priority Delhi NCR micro-location pages and discovery links
 - [x] Complete public legal pages and booking consent links
 - [x] Verify locality routing, legal content, metadata, sitemap, desktop and mobile behavior
+- [ ] Add image-led scan and category cards with clinical hover effects
+- [ ] Verify imagery, hover behavior, reduced motion, desktop and mobile rendering
