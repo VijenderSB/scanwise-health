@@ -35,3 +35,5 @@
 - [x] Add therapy CMS schema, centre availability, pricing, and protected management
 - [x] Add therapy callback form, attribution capture, WhatsApp messages, and mobile sticky actions
 - [x] Redirect the legacy Lu-177 URL, update internal links, sitemap, and verify all flows
+- [x] Update important public headings to clear Roman Hinglish while preserving medical and legal terminology
+- [x] Verify Hinglish heading layouts and existing conversion flows across desktop and mobile
