@@ -175,11 +175,13 @@ export type Database = {
       }
       enquiries: {
         Row: {
+          campaign_attribution: Json | null
           city: string
           consent_given: boolean
           created_at: string
           discount_percent: number | null
           email: string | null
+          enquiry_kind: string
           id: string
           mandatory_charges_inr: number | null
           mobile: string
@@ -187,6 +189,7 @@ export type Database = {
           notes: string | null
           offer_id: string | null
           offer_price_inr: number | null
+          preferred_callback_time: string | null
           preferred_date: string | null
           preferred_locality: string | null
           price_verified: boolean
@@ -199,14 +202,17 @@ export type Database = {
           selected_centre_id: string | null
           source_path: string
           status: Database["public"]["Enums"]["enquiry_status"]
+          therapy_slug: string | null
           updated_at: string
         }
         Insert: {
+          campaign_attribution?: Json | null
           city: string
           consent_given: boolean
           created_at?: string
           discount_percent?: number | null
           email?: string | null
+          enquiry_kind?: string
           id?: string
           mandatory_charges_inr?: number | null
           mobile: string
@@ -214,6 +220,7 @@ export type Database = {
           notes?: string | null
           offer_id?: string | null
           offer_price_inr?: number | null
+          preferred_callback_time?: string | null
           preferred_date?: string | null
           preferred_locality?: string | null
           price_verified?: boolean
@@ -226,14 +233,17 @@ export type Database = {
           selected_centre_id?: string | null
           source_path?: string
           status?: Database["public"]["Enums"]["enquiry_status"]
+          therapy_slug?: string | null
           updated_at?: string
         }
         Update: {
+          campaign_attribution?: Json | null
           city?: string
           consent_given?: boolean
           created_at?: string
           discount_percent?: number | null
           email?: string | null
+          enquiry_kind?: string
           id?: string
           mandatory_charges_inr?: number | null
           mobile?: string
@@ -241,6 +251,7 @@ export type Database = {
           notes?: string | null
           offer_id?: string | null
           offer_price_inr?: number | null
+          preferred_callback_time?: string | null
           preferred_date?: string | null
           preferred_locality?: string | null
           price_verified?: boolean
@@ -253,6 +264,7 @@ export type Database = {
           selected_centre_id?: string | null
           source_path?: string
           status?: Database["public"]["Enums"]["enquiry_status"]
+          therapy_slug?: string | null
           updated_at?: string
         }
         Relationships: [
@@ -415,6 +427,99 @@ export type Database = {
         }
         Relationships: []
       }
+      nuclear_medicine_therapies: {
+        Row: {
+          aliases: string[]
+          attendance_guidance: string
+          clinical_reviewed_at: string | null
+          clinical_reviewer: string | null
+          cost_factors: string
+          created_at: string
+          display_order: number
+          faqs: Json
+          featured: boolean
+          follow_up_monitoring: string
+          id: string
+          introduction: string
+          name: string
+          preparation_guidance: string
+          published: boolean
+          related_scans: Json
+          reports_and_scans: string[]
+          seo_description: string
+          seo_title: string
+          short_name: string
+          side_effects_precautions: string
+          slug: string
+          suitability_assessment: string
+          summary: string
+          treatment_process: string[]
+          updated_at: string
+          what_it_is: string
+          who_may_be_considered: string
+        }
+        Insert: {
+          aliases?: string[]
+          attendance_guidance: string
+          clinical_reviewed_at?: string | null
+          clinical_reviewer?: string | null
+          cost_factors: string
+          created_at?: string
+          display_order?: number
+          faqs?: Json
+          featured?: boolean
+          follow_up_monitoring: string
+          id?: string
+          introduction: string
+          name: string
+          preparation_guidance: string
+          published?: boolean
+          related_scans?: Json
+          reports_and_scans?: string[]
+          seo_description: string
+          seo_title: string
+          short_name: string
+          side_effects_precautions: string
+          slug: string
+          suitability_assessment: string
+          summary: string
+          treatment_process?: string[]
+          updated_at?: string
+          what_it_is: string
+          who_may_be_considered: string
+        }
+        Update: {
+          aliases?: string[]
+          attendance_guidance?: string
+          clinical_reviewed_at?: string | null
+          clinical_reviewer?: string | null
+          cost_factors?: string
+          created_at?: string
+          display_order?: number
+          faqs?: Json
+          featured?: boolean
+          follow_up_monitoring?: string
+          id?: string
+          introduction?: string
+          name?: string
+          preparation_guidance?: string
+          published?: boolean
+          related_scans?: Json
+          reports_and_scans?: string[]
+          seo_description?: string
+          seo_title?: string
+          short_name?: string
+          side_effects_precautions?: string
+          slug?: string
+          suitability_assessment?: string
+          summary?: string
+          treatment_process?: string[]
+          updated_at?: string
+          what_it_is?: string
+          who_may_be_considered?: string
+        }
+        Relationships: []
+      }
       scan_offers: {
         Row: {
           centre_id: string
@@ -572,6 +677,150 @@ export type Database = {
             columns: ["modality_id"]
             isOneToOne: false
             referencedRelation: "modalities"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      therapy_centre_availability: {
+        Row: {
+          availability_notes: string
+          centre_id: string | null
+          centre_name: string
+          city: string
+          confirmed: boolean
+          confirmed_at: string | null
+          created_at: string
+          id: string
+          locality: string
+          published: boolean
+          therapy_id: string
+          updated_at: string
+        }
+        Insert: {
+          availability_notes?: string
+          centre_id?: string | null
+          centre_name: string
+          city: string
+          confirmed?: boolean
+          confirmed_at?: string | null
+          created_at?: string
+          id?: string
+          locality?: string
+          published?: boolean
+          therapy_id: string
+          updated_at?: string
+        }
+        Update: {
+          availability_notes?: string
+          centre_id?: string | null
+          centre_name?: string
+          city?: string
+          confirmed?: boolean
+          confirmed_at?: string | null
+          created_at?: string
+          id?: string
+          locality?: string
+          published?: boolean
+          therapy_id?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "therapy_centre_availability_centre_id_fkey"
+            columns: ["centre_id"]
+            isOneToOne: false
+            referencedRelation: "centres"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "therapy_centre_availability_therapy_id_fkey"
+            columns: ["therapy_id"]
+            isOneToOne: false
+            referencedRelation: "nuclear_medicine_therapies"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      therapy_prices: {
+        Row: {
+          availability_id: string | null
+          centre_name: string
+          city: string
+          created_at: string
+          discount_amount_inr: number | null
+          discount_percent: number | null
+          exclusions: string[]
+          id: string
+          inclusions: string[]
+          last_updated: string
+          price_max_inr: number | null
+          price_min_inr: number | null
+          pricing_basis: string
+          published: boolean
+          regular_price_inr: number | null
+          therapy_id: string
+          updated_at: string
+          valid_until: string | null
+          verified: boolean
+          verified_at: string | null
+        }
+        Insert: {
+          availability_id?: string | null
+          centre_name: string
+          city: string
+          created_at?: string
+          discount_amount_inr?: number | null
+          discount_percent?: number | null
+          exclusions?: string[]
+          id?: string
+          inclusions?: string[]
+          last_updated?: string
+          price_max_inr?: number | null
+          price_min_inr?: number | null
+          pricing_basis: string
+          published?: boolean
+          regular_price_inr?: number | null
+          therapy_id: string
+          updated_at?: string
+          valid_until?: string | null
+          verified?: boolean
+          verified_at?: string | null
+        }
+        Update: {
+          availability_id?: string | null
+          centre_name?: string
+          city?: string
+          created_at?: string
+          discount_amount_inr?: number | null
+          discount_percent?: number | null
+          exclusions?: string[]
+          id?: string
+          inclusions?: string[]
+          last_updated?: string
+          price_max_inr?: number | null
+          price_min_inr?: number | null
+          pricing_basis?: string
+          published?: boolean
+          regular_price_inr?: number | null
+          therapy_id?: string
+          updated_at?: string
+          valid_until?: string | null
+          verified?: boolean
+          verified_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "therapy_prices_availability_id_fkey"
+            columns: ["availability_id"]
+            isOneToOne: false
+            referencedRelation: "therapy_centre_availability"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "therapy_prices_therapy_id_fkey"
+            columns: ["therapy_id"]
+            isOneToOne: false
+            referencedRelation: "nuclear_medicine_therapies"
             referencedColumns: ["id"]
           },
         ]
