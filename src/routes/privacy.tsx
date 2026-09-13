@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Disclaimer, PageIntro } from "@/components/bookmyscan/Blocks";
+import { LegalPage, LegalSection } from "@/components/bookmyscan/LegalPage";
 
 export const Route = createFileRoute("/privacy")({
   head: () => ({
@@ -18,14 +18,15 @@ export const Route = createFileRoute("/privacy")({
 });
 
 function PrivacyPage() {
-  return <>
-    <PageIntro eyebrow="Patient privacy" title="Your information is used only to support your scan enquiry." copy="We collect only the details needed to understand your request, identify suitable imaging options and coordinate an appointment." />
-    <article className="section page-wrap privacy-copy">
-      <section><h2>Information you may share</h2><p>Name, contact details, preferred location, prescribed scan, scheduling preferences and any prescription or report you choose to upload.</p></section>
-      <section><h2>How it is used</h2><p>Your information is used to respond to your enquiry and may be shared only with suitable imaging centres involved in providing availability, price or appointment assistance.</p></section>
-      <section><h2>Uploaded medical records</h2><p>Upload only records relevant to your scan enquiry. Do not upload unrelated identity, payment or financial documents.</p></section>
-      <section><h2>Your choices</h2><p>You can choose not to upload a prescription and can ask the SavoScan.com coordinator to stop contacting you about an enquiry.</p></section>
-      <Disclaimer />
-    </article>
-  </>;
+  return <LegalPage eyebrow="Patient privacy" title="Privacy Policy" intro="This policy explains how SavoScan uses personal and health-related information to support a scan enquiry.">
+    <LegalSection title="Information you may share"><p>Name, mobile number, optional email, city, preferred locality, prescribed scan, appointment preferences, notes and any prescription or report you choose to upload. Technical records may include the page used, security logs and essential browser-storage information.</p></LegalSection>
+    <LegalSection title="Purpose and lawful use"><p>Information is used to respond to your request, understand the prescribed scan, identify suitable imaging options, obtain price or availability information, coordinate an appointment and maintain service-security records. SavoScan does not use an uploaded prescription to diagnose or recommend treatment.</p></LegalSection>
+    <LegalSection title="Sharing with imaging centres"><p>Relevant information may be shared with suitable independent imaging centres only when needed for protocol, price, availability or appointment assistance. Do not upload records unrelated to the enquiry.</p></LegalSection>
+    <LegalSection title="Consent and your choices"><p>Submitting the form records your consent for the stated enquiry purpose. You may choose not to upload a document. You may withdraw consent or request access, correction or deletion by contacting SavoScan through the grievance channel. Withdrawal does not affect processing already completed lawfully.</p></LegalSection>
+    <LegalSection title="Retention"><p>Enquiry and upload records are retained only as long as reasonably needed for appointment assistance, follow-up, security, dispute handling and legal obligations. A fixed retention schedule is pending formal approval and will be published when verified.</p></LegalSection>
+    <LegalSection title="Security"><p>SavoScan uses access controls and private document storage intended to limit records to authorised assistance and administration. No online service can guarantee absolute security, so share only information needed for the enquiry.</p></LegalSection>
+    <LegalSection title="Children and authorised caregivers"><p>A parent, guardian or authorised caregiver should submit information for a child or a patient who cannot provide valid consent. The person submitting confirms they are authorised to do so.</p></LegalSection>
+    <LegalSection title="Service providers and external resources"><p>Technical hosting, storage and font-delivery providers may process limited data required to operate the website. Independent imaging centres process information under their own privacy and clinical obligations.</p></LegalSection>
+    <LegalSection title="Complaints and contact"><p>Use the Grievance Redressal page for privacy requests or complaints. The formal operator name, registered address, grievance email and officer particulars are pending publication and will be added when supplied.</p></LegalSection>
+  </LegalPage>;
 }
