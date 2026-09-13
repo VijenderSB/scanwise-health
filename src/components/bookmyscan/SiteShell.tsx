@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { Activity, ChevronDown, MapPin, Menu, MessageCircle, PhoneCall, ShieldCheck, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -9,10 +9,11 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { categories } from "@/lib/catalog";
+import { publishedTherapies } from "@/lib/therapies";
+import { getPublishedTherapySlugs } from "@/lib/therapies.functions";
 
 const nav = [
   ["Advanced Cancer Imaging", "/advanced-cancer-imaging"],
-  ["Nuclear Medicine Therapies", "/nuclear-medicine-therapies"],
   ["Scan Cost Guide", "/scan-cost"],
 ] as const;
 
@@ -58,6 +59,22 @@ const whatsappUrl = `https://wa.me/919990519519?text=${encodeURIComponent("Hello
 export function SiteShell({ children }: { children: ReactNode }) {
   const [open, setOpen] = useState(false);
   const [scanMenuOpen, setScanMenuOpen] = useState(false);
+  const [therapyMenuOpen, setTherapyMenuOpen] = useState(false);
+  const [therapySlugs, setTherapySlugs] = useState<string[]>([]);
+
+  useEffect(() => {
+    let active = true;
+    getPublishedTherapySlugs()
+      .then((slugs) => {
+        if (active) setTherapySlugs(slugs);
+      })
+      .catch(() => {
+        if (active) setTherapySlugs([]);
+      });
+    return () => {
+      active = false;
+    };
+  }, []);
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -72,6 +89,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
           </Link>
           <nav className="hidden items-center gap-5 xl:flex" aria-label="Main navigation">
             <ScanTestsDropdown />
+            <TherapiesDropdown slugs={therapySlugs} />
             {nav.map(([label, to]) => (
               <Link key={to} to={to} className="nav-link" activeProps={{ className: "nav-link-active" }}>
                 {label}
@@ -119,6 +137,33 @@ export function SiteShell({ children }: { children: ReactNode }) {
                     className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-muted hover:text-foreground"
                   >
                     {category.name}
+                  </Link>
+                ))}
+              </div>
+            )}
+            <Button
+              variant="ghost"
+              className="h-auto justify-between px-3 py-3 text-sm font-medium"
+              aria-expanded={therapyMenuOpen}
+              onClick={() => setTherapyMenuOpen(!therapyMenuOpen)}
+            >
+              Nuclear Medicine Therapies
+              <ChevronDown className={`transition-transform ${therapyMenuOpen ? "rotate-180" : ""}`} />
+            </Button>
+            {therapyMenuOpen && (
+              <div className="grid border-l border-border pl-3">
+                <Link to="/nuclear-medicine-therapies" onClick={() => setOpen(false)} className="rounded-md px-3 py-2 text-sm font-semibold hover:bg-muted">
+                  View all therapies
+                </Link>
+                {publishedTherapies.filter((therapy) => therapySlugs.includes(therapy.slug)).map((therapy) => (
+                  <Link
+                    key={therapy.slug}
+                    to="/nuclear-medicine-therapies/$therapy"
+                    params={{ therapy: therapy.slug }}
+                    onClick={() => setOpen(false)}
+                    className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-muted hover:text-foreground"
+                  >
+                    {therapy.shortName}
                   </Link>
                 ))}
               </div>
@@ -181,6 +226,31 @@ export function SiteShell({ children }: { children: ReactNode }) {
         <Button asChild size="lg"><Link to="/book-a-scan"><PhoneCall />Check Scan Price</Link></Button>
       </div>
     </div>
+  );
+}
+
+function TherapiesDropdown({ slugs }: { slugs: string[] }) {
+  const therapies = publishedTherapies.filter((therapy) => slugs.includes(therapy.slug));
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="ghost" className="nav-link h-auto gap-1 p-0 hover:bg-transparent hover:text-primary">
+          Nuclear Medicine Therapies <ChevronDown className="size-4" />
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="start" className="w-80 p-2">
+        <DropdownMenuItem asChild>
+          <Link to="/nuclear-medicine-therapies" className="font-semibold">View all therapies</Link>
+        </DropdownMenuItem>
+        {therapies.map((therapy) => (
+          <DropdownMenuItem key={therapy.slug} asChild>
+            <Link to="/nuclear-medicine-therapies/$therapy" params={{ therapy: therapy.slug }}>
+              {therapy.shortName}
+            </Link>
+          </DropdownMenuItem>
+        ))}
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 }
 
