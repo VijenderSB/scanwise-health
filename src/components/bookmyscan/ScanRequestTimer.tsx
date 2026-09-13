@@ -36,7 +36,7 @@ export function ScanRequestTimer() {
         <div className="timer-content">
           <p className="timer-kicker"><Clock3 /> Scan-price request reminder</p>
           <h2 id="scan-request-timer-title">
-            {expired ? "Aap Abhi Bhi Scan Assistance Maang Sakte Hain" : "Apni Scan-Price Request Poori Karein"}
+            {expired ? "आप अभी भी Scan Assistance माँग सकते हैं" : "अपनी Scan-Price Request पूरी करें"}
           </h2>
           <p>
             Share your prescribed scan and preferred location. This timer is a reminder only—it does not reserve a price, offer, slot or appointment.
