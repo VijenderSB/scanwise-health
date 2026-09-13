@@ -178,7 +178,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
         <div className="page-wrap footer-action">
           <div>
             <p className="eyebrow eyebrow-light">Radiology support across Delhi NCR</p>
-            <h2>Book Karne se Pehle Prescribed Scan Compare Karein.</h2>
+            <h2>Book करने से पहले Prescribed Scan Compare करें.</h2>
             <p>Review available centres, protocol details and total payable prices with patient-focused assistance.</p>
           </div>
           <div className="footer-action-buttons">
@@ -201,7 +201,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
           <FooterLinks title="Popular localities" links={localityLinks} />
           <FooterLinks title="Patient resources" links={[["All Scan Tests", "/scan-tests"], ["Compare Scans", "/compare-scans"], ["Scan Cost Guide", "/scan-cost"], ["Preparation Guides", "/preparation-guides"], ["Advanced Cancer Imaging", "/advanced-cancer-imaging"], ["Nuclear Medicine Therapies", "/nuclear-medicine-therapies"]]} />
           <div>
-            <h3 className="footer-title">Patient Safety aur Zaroori Jaankari</h3>
+            <h3 className="footer-title">Patient Safety और ज़रूरी जानकारी</h3>
             <p className="footer-safety-copy">SavoScan.com is a booking facilitator, not a medical provider. It does not diagnose, recommend tests or make treatment decisions.</p>
             <p className="footer-emergency">For an emergency, call 112 or visit the nearest hospital.</p>
             <div className="footer-trust"><ShieldCheck />Privacy-conscious assistance</div>
