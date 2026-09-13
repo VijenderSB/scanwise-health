@@ -83,9 +83,9 @@ export function SiteShell({ children }: { children: ReactNode }) {
       </div>
       <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur">
         <div className="page-wrap flex h-18 items-center justify-between gap-5">
-          <Link to="/" className="brand-lockup" aria-label="SavoScan.com home">
-            <span className="brand-mark"><span>Savo</span>Scan.com</span>
-            <span className="brand-tagline">Your Scan. Your Savings.</span>
+          <Link to="/" className="brand-lockup" aria-label="SavoScan home">
+            <span className="brand-mark"><span>SavoScan</span><b aria-hidden="true"> | </b>Your Scan. Your Savings.</span>
+            <span className="brand-services">CT · MRI · PET CT · PET MRI · Gamma Camera · Radioiodine Therapy</span>
           </Link>
           <nav className="hidden items-center gap-5 xl:flex" aria-label="Main navigation">
             <ScanTestsDropdown />
@@ -196,8 +196,8 @@ export function SiteShell({ children }: { children: ReactNode }) {
         <div className="page-wrap footer-grid">
           <div className="footer-about">
             <div className="brand-lockup">
-              <div className="brand-mark brand-mark-inverse"><span>Savo</span>Scan.com</div>
-              <div className="brand-tagline brand-tagline-inverse">Your Scan. Your Savings.</div>
+              <div className="brand-mark brand-mark-inverse"><span>SavoScan</span><b aria-hidden="true"> | </b>Your Scan. Your Savings.</div>
+              <div className="brand-services brand-services-inverse">CT · MRI · PET CT · PET MRI · Gamma Camera · Radioiodine Therapy</div>
             </div>
             <p>Radiology test discovery, price comparison and appointment assistance for patients across Delhi NCR, India.</p>
             <div className="footer-service-area"><MapPin />Delhi · Gurgaon · Noida · Faridabad · Ghaziabad · Greater Noida</div>
