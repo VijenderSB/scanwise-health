@@ -27,4 +27,4 @@
 - [x] Verify the visual refresh across desktop and mobile without disrupting conversion flows
 - [x] Add priority Delhi NCR micro-location pages and discovery links
 - [x] Complete public legal pages and booking consent links
-- [ ] Verify locality routing, legal content, metadata, sitemap, desktop and mobile behavior
+- [x] Verify locality routing, legal content, metadata, sitemap, desktop and mobile behavior
